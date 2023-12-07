@@ -16,7 +16,10 @@ or generative adversarial networks (GANs). In turn the field of image forensics 
 
 ### Pretrained weights for models
 
--Facial Reenactment
+The following link contains the weights for the models (CLRNet [CLR], ShallowNetV3 [SNV3], MesoInception4 [M14], and Xception [XCE]) used in our experiments
+[link to download](https://drive.google.com/drive/folders/1CE-HzZh76ejAsrIFSlbaEGmQHyzoj9EQ?usp=sharing)
+
+### Dataset to both train and validate model:
 *    Face2Face (F2F) [Dataset](https://github.com/ondyari/FaceForensics)
 *    Neural Texture (NT) [Dataset](https://github.com/ondyari/FaceForensics)
 *    DeepFake (DF) [Dataset] [GitHub](https://github.com/ondyari/FaceForensics)
@@ -24,25 +27,4 @@ or generative adversarial networks (GANs). In turn the field of image forensics 
 *    DeepFake Detection (DFD) [Dataset](https://github.com/ondyari/FaceForensics)
 *    DeepFake Detection Challenge (DFDC) [Dataset](https://dfdc.ai/login)
 
-## Fine-tuning
-For fine-tuning model was used specific LoraConfig. You may wanna play with lora_dropout, lora_r, lora_alpha as well and adjust it more precisely.
-```
-lora_alpha = 16
-lora_dropout = 0.1
-lora_r = 64
-
-config = LoraConfig(
-    lora_alpha=lora_alpha,
-    lora_dropout=lora_dropout,
-    r=lora_r,
-    bias="none",
-    task_type="CAUSAL_LM",
-    target_modules=[
-        "query_key_value",
-        "dense",
-        "dense_h_to_4h",
-        "dense_4h_to_h",
-    ]
-)
-```
-## Metrics
+### [Link to test of the models](https://github.com/shahroztariq/CLRNet)
