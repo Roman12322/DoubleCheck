@@ -16,14 +16,13 @@ or generative adversarial networks (GANs). In turn the field of image forensics 
 
 ### Pretrained weights for models
 
-- Facial Reenactment
---Face2Face (F2F) [Dataset](https://github.com/ondyari/FaceForensics)
---Neural Texture (NT) [Dataset]()
--Identity Swap
---DeepFake (DF) [Dataset] [GitHub](https://github.com/ondyari/FaceForensics)
---FaceSwap (FS) [Dataset] [GitHub](https://github.com/ondyari/FaceForensics)
--DeepFake Detection (DFD) [Dataset](https://github.com/ondyari/FaceForensics)
---DeepFake Detection Challenge (DFDC) [Dataset](https://dfdc.ai/login)
+-Facial Reenactment
+*    Face2Face (F2F) [Dataset](https://github.com/ondyari/FaceForensics)
+*    Neural Texture (NT) [Dataset](https://github.com/ondyari/FaceForensics)
+*    DeepFake (DF) [Dataset] [GitHub](https://github.com/ondyari/FaceForensics)
+*    FaceSwap (FS) [Dataset] [GitHub](https://github.com/ondyari/FaceForensics)
+*    DeepFake Detection (DFD) [Dataset](https://github.com/ondyari/FaceForensics)
+*    DeepFake Detection Challenge (DFDC) [Dataset](https://dfdc.ai/login)
 
 ## Fine-tuning
 For fine-tuning model was used specific LoraConfig. You may wanna play with lora_dropout, lora_r, lora_alpha as well and adjust it more precisely.
