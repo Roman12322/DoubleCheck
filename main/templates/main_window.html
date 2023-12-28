@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>double check</title>
+</head>
+<body>
+    <p2> {{ avg_score }}</p2>
+    <form action="recognize_person" method="post">
+        {% csrf_token %}
+        <button type="submit"> record </button>
+    </form>
+</body>
+</html>
