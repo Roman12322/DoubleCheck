@@ -6,15 +6,17 @@ body {
   overflow-x: hidden;
 }
 
-.confidence-box {
+.detail-box .confidence-box {
   background-color: azure;
   border: 5px solid black;
   border-radius: 12px;
-  position: relative;
-  top: 20px;
-  left: 420px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 25px;
+  margin-top: 25px;
   color: black;
-  padding: 35px 64px;
+  padding: 35px 100px;
   text-align: center;
   display: inline-block;
   font-size: 16px;
