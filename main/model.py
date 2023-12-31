@@ -24,12 +24,8 @@ def record_video():
     out = cv2.VideoWriter('output.avi', fourcc, 20.0, (640, 480))
     while True:
         ret, frame = cap.read()
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         out.write(frame)
-
         cv2.imshow('video feed', frame)
-        cv2.imshow('gray feed', gray)    
-
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
@@ -152,5 +148,5 @@ class Meso4(Classifier):
 
         return Model(inputs = x, outputs = y)        
 
-if __name__ == "__main__":
-    pipeline()
+# if __name__ == "__main__":
+#     pipeline()
