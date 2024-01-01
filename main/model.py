@@ -1,4 +1,3 @@
-import io
 import numpy as np
 import os
 from keras.layers import Input, Dense, Flatten, Conv2D, MaxPooling2D, BatchNormalization, Dropout, Reshape, Concatenate, LeakyReLU
