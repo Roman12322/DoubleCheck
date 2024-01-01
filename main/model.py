@@ -13,19 +13,18 @@ from datetime import timedelta
 from PIL import Image
 from keras.utils import img_to_array
 
-# Height and width refer to the size of the image
-# Channels refers to the amount of color channels (red, green, blue)
 image_dimensions = {'height':256, 'width':256, 'channels':3}
 SAVING_FRAMES_PER_SECOND = 2
 
 def record_video():
     cap = cv2.VideoCapture(0)
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('output.avi', fourcc, 20.0, (640, 480))
+    out = cv2.VideoWriter('output.avi', fourcc, 20.0, (640, 360))
     while True:
         ret, frame = cap.read()
-        out.write(frame)
-        cv2.imshow('video feed', frame)
+        if ret:
+            out.write(frame)
+            cv2.imshow('video feed', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
@@ -148,5 +147,5 @@ class Meso4(Classifier):
 
         return Model(inputs = x, outputs = y)        
 
-# if __name__ == "__main__":
-#     pipeline()
+if __name__ == "__main__":
+    record_video()
