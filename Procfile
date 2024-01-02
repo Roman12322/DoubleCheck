@@ -1,1 +1,1 @@
-web: gunicorn doublecheck.wsgi --bind 0.0.0.0:$PORT --log-file -
+web: gunicorn doublecheck.wsgi --bind 0.0.0.0:$PORT
