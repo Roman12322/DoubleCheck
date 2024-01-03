@@ -37,10 +37,10 @@ def register(request):
         if password == c_password:
             user = User.objects.create(email=email, password=password)
             user.save()
-            return render('main/signin.html')  # Перенаправление на страницу входа после регистрации
+            return render(request, 'main/signin.html')  # Перенаправление на страницу входа после регистрации
         else:
             messages.error(request, 'Passwords must be similar')
-            return render('main/signup.html')  
+            return render(request, 'main/signup.html')  
     else:
         return render(request, 'main/signup.html')
 
