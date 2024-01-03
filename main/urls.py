@@ -13,6 +13,8 @@ urlpatterns = [
     path('signin', views.render_signin_window),
     path('signup', views.render_signup_window),
     path('recognize_person', views.recognize_person, name='recognize_person'),
+    path('register', views.register, name='register'),
+    path('login', views.login, name='login'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login as django_login
+from .models import User
 from .model import pipeline, Meso4
-
-# Create your views here.
+from django.contrib import messages
 
 def render_home_window(request):
     return render(request, "main/index.html")
@@ -27,6 +28,35 @@ def render_signin_window(request):
 
 def render_signup_window(request):
     return render(request, "main/signup.html")
+
+def register(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        c_password = request.POST['c_password']
+        if password == c_password:
+            user = User.objects.create_user(email=email, password=password)
+            user.save()
+            return redirect('main/signin.html')  # Перенаправление на страницу входа после регистрации
+        else:
+            messages.error(request, 'Passwords must be similar')
+            return redirect('main/signup.html')  
+    else:
+        return render(request, 'main/signup.html')
+
+def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            django_login(request, user)
+            return redirect('main/main.html')  # Перенаправление на главную страницу после входа
+        else:
+            messages.error(request, 'Incorrect email or password')
+            return redirect('main/signin.html')
+    else:
+        return render(request, 'main/signin.html')
 
 def recognize_person(request):
     avg_score = pipeline()
