@@ -26,6 +26,11 @@ SECRET_KEY = 'django-insecure-2+9lqo=h_afq%1vg0*1rm!3s@7(49pzxaetdm988s4wd13_*=2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # одна неделя
+CSRF_TRUSTED_ORIGINS = [
+    'https://doublecheck-production.up.railway.app'
+]
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -124,11 +129,6 @@ STATICFILES_DIRS = []
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # одна неделя
-CSRF_TRUSTED_ORIGINS = [
-    'https://doublecheck-production.up.railway.app/'
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
