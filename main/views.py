@@ -31,16 +31,20 @@ def render_signup_window(request):
 
 def register(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        c_password = request.POST['c_password']
-        if password == c_password:
-            user = User.objects.create(email=email, password=password)
-            user.save()
-            return render(request, 'main/signin.html')  # Перенаправление на страницу входа после регистрации
-        else:
+        try:
+            email = request.POST['email']
+            password = request.POST['password']
+            c_password = request.POST['c_password']
+            if password == c_password:
+                user = User.objects.create(email=email, password=password)
+                user.save()
+                return render(request, 'main/signin.html')  # Перенаправление на страницу входа после регистрации
+            else:
+                messages.error(request, 'Passwords must be similar')
+                return render(request, 'main/signup.html')  
+        except:
             messages.error(request, 'Passwords must be similar')
-            return render(request, 'main/signup.html')  
+            return render(request, 'main/signup.html')          
     else:
         return render(request, 'main/signup.html')
 
@@ -49,6 +53,7 @@ def login(request):
         email = request.POST['email']
         password = request.POST['password']
         user = authenticate(request, email=email, password=password)
+        print(user)
         if user is not None:
             django_login(request, user)
             return render(request, 'main/main.html')  # Перенаправление на главную страницу после входа
