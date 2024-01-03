@@ -22,6 +22,12 @@ def render_why_window(request):
 def render_main_window(request):
     return render(request, "main/main.html")    
 
+def render_signin_window(request):
+    return render(request, "main/signin.html")   
+
+def render_signup_window(request):
+    return render(request, "main/signup.html")
+
 def recognize_person(request):
     avg_score = pipeline()
     context = {'confidence': avg_score}

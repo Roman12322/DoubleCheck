@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>DoubleCheck</title>
+      <link rel="stylesheet" href="{% static 'main/css/singup.css' %}">
+      <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}" type="">
+   </head>
+   <body>
+      <div class="wrapper">
+         <div class="title">
+            Sign Up Form
+         </div>
+         <form action="#">
+            <div class="field">
+               <input type="text" required>
+               <label>Email Address</label>
+            </div>
+            <div class="field">
+               <input type="password" required>
+               <label>New Password</label>
+            </div>
+            <div class="field">
+                <input type="password" required>
+                <label>Repeat Password</label>
+             </div>
+            <div class="content">
+               <div class="checkbox">
+                  <input type="checkbox" id="remember-me">
+                  <label for="remember-me">I've read and agree to the terms of service</label>
+               </div>
+            </div>
+            <div class="field">
+               <input type="submit" value="Sign Up">
+            </div>
+            <div class="signup-link">
+               Already have an account? <a href="https://doublecheck-production.up.railway.app/signin">Sign in</a>
+            </div>
+         </form>
+      </div>
+   </body>
+</html>

@@ -10,6 +10,8 @@ urlpatterns = [
     path('service', views.render_service_window),
     path('about', views.render_about_window),
     path('main', views.render_main_window),
+    path('signin', views.render_signin_window),
+    path('signup', views.render_signup_window),
     path('recognize_person', views.recognize_person, name='recognize_person'),
 ]
 
