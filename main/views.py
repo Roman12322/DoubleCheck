@@ -35,7 +35,7 @@ def register(request):
         password = request.POST['password']
         c_password = request.POST['c_password']
         if password == c_password:
-            user = User.objects.create_user(email=email, password=password)
+            user = User.objects.create(email=email, password=password)
             user.save()
             return render('main/signin.html')  # Перенаправление на страницу входа после регистрации
         else:
@@ -51,10 +51,10 @@ def login(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             django_login(request, user)
-            return render('main/main.html')  # Перенаправление на главную страницу после входа
+            return render(request, 'main/main.html')  # Перенаправление на главную страницу после входа
         else:
             messages.error(request, 'Incorrect email or password')
-            return render('main/signin.html')
+            return render(request, 'main/signin.html')
     else:
         return render(request, 'main/signin.html')
 
