@@ -52,7 +52,8 @@ def login(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-        user = authenticate(request, email=email, password=password)
+        # user = authenticate(request, email=email, password=password)
+        user = User.objects.get(email=email, password=password)
         print(user)
         if user is not None:
             django_login(request, user)
