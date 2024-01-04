@@ -42,7 +42,7 @@ window.onload = function () {
                 url: "/recognize_person",
                 data: data_files,
                 processData: false,
-                contentType: "multipart/form-data",
+                contentType: false,
               }).done(function(response) {
                 alert(response);
               });
