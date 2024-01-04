@@ -8,14 +8,11 @@ window.onload = function () {
         recordButton.onclick = function () {
             mediaRecorder = new MediaRecorder(stream);
             recordedBlobs = [];
+            mediaRecorder.start(1000);   
             mediaRecorder.ondataavailable = (event) => {
                 if (event.data && event.data.size > 0) {
                 recordedBlobs.push(event.data);
                 };
-            mediaRecorder.start();
-            setTimeout(() => {
-                stopRecording();
-            }, 5000);    
         }
         stopButton.onclick = function () {
             mediaRecorder.stop();
