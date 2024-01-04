@@ -1,13 +1,13 @@
 let mediaRecorder;
 let recordedBlobs;
 
-const recordButton = document.querySelector('button#record');
+const recordButton = document.querySelector('#record');
 recordButton.addEventListener('click', () => {
-  if (recordButton.textContent === 'Начать запись') {
+  if (recordButton.textContent === 'try now') {
     startRecording();
   } else {
     stopRecording();
-    recordButton.textContent = 'Начать запись';
+    recordButton.textContent = 'Начать try now';
   }
 });
 

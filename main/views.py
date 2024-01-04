@@ -51,17 +51,21 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        # user = authenticate(request, email=email, password=password)
-        user = User.objects.get(email=email, password=password)
-        print(user)
-        if user is not None:
-            django_login(request, user)
-            return render(request, 'main/main.html')  # Перенаправление на главную страницу после входа
-        else:
+        try:
+            email = request.POST['email']
+            password = request.POST['password']
+            # user = authenticate(request, email=email, password=password)
+            user = User.objects.get(email=email, password=password)
+            print(user)
+            if user is not None:
+                django_login(request, user)
+                return render(request, 'main/main.html')  # Перенаправление на главную страницу после входа
+            else:
+                messages.error(request, 'Incorrect email or password')
+                return render(request, 'main/signin.html')
+        except:
             messages.error(request, 'Incorrect email or password')
-            return render(request, 'main/signin.html')
+            return render(request, 'main/signin.html')    
     else:
         return render(request, 'main/signin.html')
 
