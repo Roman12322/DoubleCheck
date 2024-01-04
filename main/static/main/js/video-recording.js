@@ -24,8 +24,9 @@ window.onload = function () {
               
               mediaRecorder.stop();
               const blob = new Blob(recordedBlobs, {type: 'video/webm'});
-              let data_files = new FormData();
-              data_files.append('video', blob);
+              let formdata = new FormData();
+              formdata.append("filename", 'test.webm')
+              formdata.append('video', blob);
               
               console.log(recordedBlobs)
 
@@ -39,18 +40,18 @@ window.onload = function () {
               // a.download = "test.webm";
               // a.click();
 
-              fetch("/recognize_person", {method:"POST", body:data_files})
-                .then(response => console.log(response.text()))
+              // fetch("/recognize_person", {method:"POST", body:formdata})
+              //   .then(response => console.log(response.text()))
 
-              // $.ajax({
-              //   method: "POST",
-              //   url: "/recognize_person",
-              //   data: data_files,
-              //   processData: false,
-              //   contentType: false
-              // }).done(function(response) {
-              //   alert(response);
-              // });
+              $.ajax({
+                method: "POST",
+                url: "/recognize_person",
+                data: formdata,
+                processData: false,
+                contentType: false
+              }).done(function(response) {
+                alert(response);
+              });
             });
           });
     }
