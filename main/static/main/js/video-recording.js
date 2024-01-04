@@ -39,16 +39,11 @@ window.onload = function () {
 
               $.ajax({
                 method: "POST",
-                contentType: false,
-                processData: false,
                 url: "/recognize_person",
                 data: { name: "John", 
                         location: "Boston",
-                        data: data_files
-                    },
-                success: function (data) {
-                    $("#confidenceh3").html(data)
-                }    
+                        data_q: data_files,
+                    },   
               })
                 .done(function() {
                   alert( "Saved" );
