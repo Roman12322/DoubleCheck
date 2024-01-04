@@ -81,7 +81,7 @@
       <div class="btn-box">
         <button class="try-button" id="stop">stop</button>
       </div>
-      <form action="recognize_person", method="post">
+      <form action="recognize_person", method="post" id="post-form">
         {% csrf_token %}
         <div class="detail-box">
           <div class="confidence-box">

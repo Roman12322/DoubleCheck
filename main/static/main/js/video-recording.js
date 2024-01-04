@@ -5,6 +5,7 @@ window.onload = function () {
     const recordedBlobs = [];
     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
         video.srcObject = stream;
+        // record-button
         recordButton.onclick = function () {
             mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.start(1000);   
@@ -13,37 +14,26 @@ window.onload = function () {
                 recordedBlobs.push(event.data);
                 };
         }
+        // stop-button 
         stopButton.onclick = function () {
             mediaRecorder.stop();
             const blob = new Blob(recordedBlobs, {type: 'video/webm'});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            document.body.appendChild(a);
-            a.style = "display: none";
-            a.href = url;
-            a.download = "test.webm";
-            a.click();
+            let data = new FormData();
+            data.append('file', blob, 'myRecording.webm');
+            $.ajax({
+                method: 'POST',
+                url: '/recognize_person',
+                data: data,
+                success: response => console.log('Success:', response),
+
+            })
+            // const url = URL.createObjectURL(blob);
+            // const a = document.createElement("a");
+            // document.body.appendChild(a);
+            // a.style = "display: none";
+            // a.href = url;
+            // a.download = "test.webm";
+            // a.click();
         }
     }
-});
-
-
-}
-function stopRecording() {
-  //   sendData(blob);
-}
-// function sendData(data) {
-//     let url = '/recognize_person';
-//     let formData = new FormData();
-//     formData.append('file', data, 'myRecording.webm');
-//     $.ajax(){
-
-//     };
-//     fetch(url, {
-//       method: 'POST',
-//       body: formData
-//     })
-//     .then(response => console.log('Success:', response))
-//     .catch(error => console.error('Error:', error));
-//   }
-  
+});}
