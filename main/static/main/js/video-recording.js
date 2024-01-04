@@ -43,12 +43,11 @@ window.onload = function () {
                 data: { name: "John", 
                         location: "Boston",
                         data_q: data_files,
-                    },   
-              })
-                .done(function() {
-                  alert( "Saved" );
-                });
-
+                    },
+                processData: false       
+              }).done(function(response) {
+                alert(response);
+              });
             });
           });
     }
