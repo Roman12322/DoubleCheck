@@ -43,7 +43,6 @@ window.onload = function () {
                 data: { name: "John", 
                         location: "Boston",
                     },
-                processData: false       
               }).done(function(response) {
                 alert(response);
               });
