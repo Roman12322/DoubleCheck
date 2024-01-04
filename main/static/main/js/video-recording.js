@@ -39,15 +39,18 @@ window.onload = function () {
               // a.download = "test.webm";
               // a.click();
 
-              $.ajax({
-                method: "POST",
-                url: "/recognize_person",
-                data: data_files,
-                processData: false,
-                contentType: false
-              }).done(function(response) {
-                alert(response);
-              });
+              fetch("/recognize_person", {method:"POST", body:data_files})
+                .then(response => console.log(response.text()))
+
+              // $.ajax({
+              //   method: "POST",
+              //   url: "/recognize_person",
+              //   data: data_files,
+              //   processData: false,
+              //   contentType: false
+              // }).done(function(response) {
+              //   alert(response);
+              // });
             });
           });
     }
