@@ -23,9 +23,9 @@ window.onload = function () {
               console.log('Button clicked')
               
               mediaRecorder.stop();
-              const blob = new Blob(recordedBlobs, {type: 'video/webm'});
+              const blob = new Blob(recordedBlobs, {type: 'video/mp4'});
               let formdata = new FormData();
-              formdata.append("filename", 'test.webm')
+              formdata.append("filename", 'test.mp4')
               formdata.append('video', blob);
               
               console.log(recordedBlobs)
