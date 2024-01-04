@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.contrib.auth import authenticate, login as django_login
 from .models import User
 from .model import pipeline, Meso4
@@ -65,8 +65,12 @@ def login(request):
         return render(request, 'main/signin.html')
 
 def recognize_person(request):
-    avg_score = pipeline()
-    context = {'confidence': avg_score}
+    if request.method == 'POST':
+        file = request.FILES['file']
+        # Здесь вы можете обработать файл как вам нужно
+        # avg_score = pipeline()
+        context = {'confidence': f'получил видео {file}'}
+        render(request, 'main/main.html', context)
     return render(request, 'main/main.html', context)
  
 

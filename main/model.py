@@ -15,21 +15,6 @@ from keras.utils import img_to_array
 image_dimensions = {'height':256, 'width':256, 'channels':3}
 SAVING_FRAMES_PER_SECOND = 2
 
-def record_video():
-    cap = cv2.VideoCapture(0)
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('output.avi', fourcc, 20.0, (640, 360))
-    while True:
-        ret, frame = cap.read()
-        if ret:
-            out.write(frame)
-            cv2.imshow('video feed', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
-    cap.release()
-    out.release()
-    cv2.destroyAllWindows()
 
 def format_timedelta(td):
     """Служебная функция для классного форматирования объектов timedelta (например, 00: 00: 20.05)
@@ -82,7 +67,6 @@ def get_average_predict_score(images_list, model):
     return score/len(images_list)    
 
 def pipeline():
-    record_video()
     preprocessing_video("C:/Users/megaf/OneDrive/Рабочий стол/double_check/doublecheck/output.avi")
     meso = Meso4()
     meso.load("C:/Users/megaf/OneDrive/Рабочий стол/double_check/doublecheck/main/model_weights/model.h5")
@@ -145,6 +129,3 @@ class Meso4(Classifier):
         y = Dense(1, activation = 'sigmoid')(y)
 
         return Model(inputs = x, outputs = y)        
-
-if __name__ == "__main__":
-    record_video()
