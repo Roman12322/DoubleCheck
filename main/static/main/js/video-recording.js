@@ -25,23 +25,24 @@ window.onload = function () {
               mediaRecorder.stop();
               const blob = new Blob(recordedBlobs, {type: 'video/webm'});
               let data_files = new FormData();
-              data_files.append('file', blob);
+              data_files.append('video', blob);
               
               console.log(blob)
               
-              const url_1 = URL.createObjectURL(blob);
-              const a = document.createElement("a");
-              document.body.appendChild(a);
-              a.style = "display: none";
-              a.href = url_1;
-              a.download = "test.webm";
-              a.click();
+              // const url_1 = URL.createObjectURL(blob);
+              // const a = document.createElement("a");
+              // document.body.appendChild(a);
+              // a.style = "display: none";
+              // a.href = url_1;
+              // a.download = "test.webm";
+              // a.click();
 
               $.ajax({
                 method: "POST",
                 url: "/recognize_person",
                 data: data_files,
-                contentType: false,
+                processData: false,
+                contentType: false
               }).done(function(response) {
                 alert(response);
               });
