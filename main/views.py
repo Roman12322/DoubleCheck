@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login as django_login
+from django.views.decorators.csrf import csrf_exempt
 from .models import User
 from .model import pipeline, Meso4
 from django.contrib import messages
@@ -64,6 +65,7 @@ def login(request):
     else:
         return render(request, 'main/signin.html')
 
+@csrf_exempt
 def recognize_person(request):
     if request.method == 'POST':
         file = request.FILES['file']

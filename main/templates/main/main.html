@@ -76,7 +76,7 @@
         </h2>
       </div>
       <form action="recognize_person", method="post">
-        {% csrf_token %}
+        <!-- {% csrf_token %} -->
         <div class="detail-box">
           <div class="confidence-box">
             <h3>
@@ -85,7 +85,7 @@
           </div>
           <video id="video" width="640" height="480" autoplay></video>
           <div class="btn-box">
-            <button class="try-button" id="record" type="submit">
+            <button class="try-button" id="record">
               Try out
             </button>
           </div>
