@@ -2,12 +2,11 @@ window.onload = function () {
     var video = document.querySelector('video');
     const recordButton = document.querySelector('button#record');
     const stopButton = document.querySelector('button#stop');
-
+    const recordedBlobs = [];
     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
         video.srcObject = stream;
         recordButton.onclick = function () {
             mediaRecorder = new MediaRecorder(stream);
-            recordedBlobs = [];
             mediaRecorder.start(1000);   
             mediaRecorder.ondataavailable = (event) => {
                 if (event.data && event.data.size > 0) {
