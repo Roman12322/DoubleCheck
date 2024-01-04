@@ -75,6 +75,12 @@
           will process your video and give you an answer either this video deepfake or not.</br>
         </h2>
       </div>
+      <div class="btn-box">
+        <button class="try-button" id="record">record</button>
+      </div>
+      <div class="btn-box">
+        <button class="try-button" id="stop">stop</button>
+      </div>
       <form action="recognize_person", method="post">
         {% csrf_token %}
         <div class="detail-box">
@@ -84,12 +90,6 @@
             </h3>
           </div>
           <video id="video" width="640" height="480" autoplay></video>
-          <div class="btn-box">
-            <button class="try-button" id="record">record</button>
-          </div>
-          <div class="btn-box">
-            <button class="try-button" id="stop">stop</button>
-          </div>
         </div>  
       </form>    
   </section>
