@@ -75,7 +75,7 @@ def recognize_person(request):
     if request.method == 'POST':
         # file = request.FILES.get('file', None)
         # avg_score = pipeline()
-        file = json.load(request)['post_data']
+        file = json.loads(request)['post_data']
         context = {'confidence': f'получил видео {file}'}
         return render(request, 'main/main.html', context)
     else:
