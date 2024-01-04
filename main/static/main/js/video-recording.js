@@ -1,14 +1,16 @@
 window.onload = function () {
     var video = document.querySelector('video');
     const recordButton = document.querySelector('button#record');
+    const stopButton = document.querySelector('button#stop');
 
     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
         video.srcObject = stream;
         recordButton.onclick = function () {
             startRecording();
+        }
+        stopButton.onclick = function () {
             stopRecording();
         }
-
     });
 
 }
@@ -22,30 +24,34 @@ function startRecording() {
     }
   };
   mediaRecorder.start();
-  recordButton.textContent = 'Остановить запись';
   setTimeout(() => {
-    if (recordButton.textContent === 'Остановить запись') {
       stopRecording();
-      recordButton.textContent = 'Try out';
-    }
   }, 5000); // Остановить запись через 5 секунд
 }
-
 function stopRecording() {
   mediaRecorder.stop();
   const blob = new Blob(recordedBlobs, {type: 'video/webm'});
-  sendData(blob);
+  const url = URL.createObjectURL(Blob);
+  const a = document.createElement("a");
+  document.body.appendChild(a);
+  a.style = "display: none";
+  a.href = url;
+  a.download = "test.webm";
+  a.click();
+  //   sendData(blob);
 }
+// function sendData(data) {
+//     let url = '/recognize_person';
+//     let formData = new FormData();
+//     formData.append('file', data, 'myRecording.webm');
+//     $.ajax(){
 
-function sendData(data) {
-    let url = '/recognize_person';
-    let formData = new FormData();
-    formData.append('file', data, 'myRecording.webm');
-    fetch(url, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => console.log('Success:', response))
-    .catch(error => console.error('Error:', error));
-  }
+//     };
+//     fetch(url, {
+//       method: 'POST',
+//       body: formData
+//     })
+//     .then(response => console.log('Success:', response))
+//     .catch(error => console.error('Error:', error));
+//   }
   
