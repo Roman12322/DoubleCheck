@@ -29,19 +29,7 @@ window.onload = function () {
               formdata.append('video', blob);
               
               console.log(recordedBlobs)
-
               console.log(blob)
-              
-              // const url_1 = URL.createObjectURL(blob);
-              // const a = document.createElement("a");
-              // document.body.appendChild(a);
-              // a.style = "display: none";
-              // a.href = url_1;
-              // a.download = "test.webm";
-              // a.click();
-
-              // fetch("/recognize_person", {method:"POST", body:formdata})
-              //   .then(response => console.log(response.text()))
 
               $.ajax({
                 method: "POST",

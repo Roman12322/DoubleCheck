@@ -75,8 +75,8 @@ def recognize_person(request):
         print(request.POST.keys())
         print(request.FILES)
         video_filename = request.POST.get('filename', None)
-        video = request.FILES('video')
-        
+        video = request.FILES.get('video', None)
+
         avg_score = pipeline(file=video, video_filename=video_filename)
         success = f"score: {avg_score}"
         return HttpResponse(success)
