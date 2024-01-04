@@ -6,38 +6,34 @@ window.onload = function () {
     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
         video.srcObject = stream;
         recordButton.onclick = function () {
-            startRecording();
+            mediaRecorder = new MediaRecorder(stream);
+            recordedBlobs = [];
+            mediaRecorder.ondataavailable = (event) => {
+                if (event.data && event.data.size > 0) {
+                recordedBlobs.push(event.data);
+                };
+            mediaRecorder.start();
+            setTimeout(() => {
+                stopRecording();
+            }, 5000);    
         }
         stopButton.onclick = function () {
-            stopRecording();
+            mediaRecorder.stop();
+            const blob = new Blob(recordedBlobs, {type: 'video/webm'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            document.body.appendChild(a);
+            a.style = "display: none";
+            a.href = url;
+            a.download = "test.webm";
+            a.click();
         }
-    });
-
-}
-
-function startRecording() {
-  mediaRecorder = new MediaRecorder(stream);
-  recordedBlobs = [];
-  mediaRecorder.ondataavailable = (event) => {
-    if (event.data && event.data.size > 0) {
-      recordedBlobs.push(event.data);
     }
-  };
-  mediaRecorder.start();
-  setTimeout(() => {
-      stopRecording();
-  }, 5000); // Остановить запись через 5 секунд
+});
+
+
 }
 function stopRecording() {
-  mediaRecorder.stop();
-  const blob = new Blob(recordedBlobs, {type: 'video/webm'});
-  const url = URL.createObjectURL(Blob);
-  const a = document.createElement("a");
-  document.body.appendChild(a);
-  a.style = "display: none";
-  a.href = url;
-  a.download = "test.webm";
-  a.click();
   //   sendData(blob);
 }
 // function sendData(data) {
