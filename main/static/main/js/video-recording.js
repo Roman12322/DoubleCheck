@@ -37,7 +37,7 @@ function stopRecording() {
 }
 
 function sendData(data) {
-    let url = '/your-endpoint/';
+    let url = '/recognize_person';
     let formData = new FormData();
     formData.append('file', data, 'myRecording.webm');
     fetch(url, {
