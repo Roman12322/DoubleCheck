@@ -12,6 +12,7 @@ from datetime import timedelta
 from PIL import Image
 from keras.utils import img_to_array
 
+
 image_dimensions = {'height':256, 'width':256, 'channels':3}
 SAVING_FRAMES_PER_SECOND = 1
 
@@ -30,10 +31,11 @@ def format_timedelta(td):
 
 def preprocessing_video(video_file, video_filename):
     # загрузить видеоклип
-    with open("output.mp4", "wb") as video:
+    with open("output.webm", "wb") as video:
+        print(video_file.getbuffer())    
         video.write(video_file.getbuffer())
 
-    video_clip = VideoFileClip('output.mp4')
+    video_clip = VideoFileClip('output.webm')
     # создаем папку по названию видео файла
     filename, _ = os.path.splitext(video_filename)
     filename += "-moviepy"
