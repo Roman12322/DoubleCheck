@@ -14,29 +14,31 @@ window.onload = function () {
                 recordedBlobs.push(event.data);
                 };
         }
-        $('.submit').click(function (){
-            console.log('Button clicked')
-            
-            mediaRecorder.stop();
-            const blob = new Blob(recordedBlobs, {type: 'video/webm'});
-            let data = new FormData();
-            data.append('file', blob, 'myRecording.webm');
-            data.append("csrfmiddlewaretoken", "{{ csrf_token }}");
 
-            console.log(data);
-            
-            $.ajax({
-                url: "{% url 'recognize_person' %}",
+        $(document).ready(function () {
+            $("form").submit(function (event) {
+              event.preventDefault();
+              console.log('Button clicked')
+              
+              mediaRecorder.stop();
+              const blob = new Blob(recordedBlobs, {type: 'video/webm'});
+              let data = new FormData();
+              data.append('file', blob, 'myRecording.webm');
+              
+              console.log(data);  
+
+              $.ajax({
                 method: 'POST',
+                url: '/recognize_person',
                 processData: false,
                 contentType: false,
-                mimeType: "multipart/form-data",
+                cache: false,
                 data: data,
-                success: function(data) {
-                    console.log("data sent to the backend");
-                }
+                success: function () {console.log("success");}
             })
-        })
+          
+            });
+          });
             // download video-file
             // const url_1 = URL.createObjectURL(blob);
             // const a = document.createElement("a");
