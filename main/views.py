@@ -73,8 +73,7 @@ def login(request):
 def recognize_person(request):
     if request.method == 'POST':
         file = request.POST.get('name', None)
-        print(request.POST)
-        success = f"successfully get name {file}"
+        success = f"successfully got keys {request.POST.keys()}"
         # avg_score = pipeline()
         return HttpResponse(success)
     else:
