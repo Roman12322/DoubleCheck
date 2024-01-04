@@ -27,7 +27,7 @@ window.onload = function () {
               let data_files = new FormData();
               data_files.append('file', blob, 'myRecording.webm');
               
-              console.log(data_files)
+              console.log(blob)
               
               const url_1 = URL.createObjectURL(blob);
               const a = document.createElement("a");
@@ -39,13 +39,18 @@ window.onload = function () {
 
               $.ajax({
                 method: "POST",
+                contentType: false,
+                processData: false,
                 url: "/recognize_person",
                 data: { name: "John", 
                         location: "Boston",
-                    }
+                    },
+                success: function (data) {
+                    ("#confidenceh3").html(data)
+                }    
               })
                 .done(function() {
-                  alert( "Data Saved: ");
+                  alert( "Saved" );
                 });
 
             });

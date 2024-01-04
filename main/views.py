@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import authenticate, login as django_login
 from django.views.decorators.csrf import csrf_exempt
 from .models import User
@@ -72,12 +72,12 @@ def login(request):
 @csrf_exempt
 def recognize_person(request):
     if request.method == 'POST':
-        file = request.FILES.get('name', None)
+        file = request.POST.get('name', None)
+        success = f"successfully get name {file}"
         # avg_score = pipeline()
-        context = {'confidence': f'получил видео {file}'}
-        return render(request, 'main/main.html', context)
+        return HttpResponse(success)
     else:
-        context = {'confidence': "failed to response"}
-        return render(request, 'main/main.html', context)
+        failed_response = {'confidence': "failed to response"}
+        return HttpResponse(failed_response)
  
 
