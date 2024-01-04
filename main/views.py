@@ -70,7 +70,7 @@ def recognize_person(request):
         file = request.FILES.get('file', None)
         # avg_score = pipeline()
         context = {'confidence': f'получил видео {file}'}
-        render(request, 'main/main.html', context)
+        return render(request, 'main/main.html', context)
     else:
         context = {'confidence': "failed to response"}
         return render(request, 'main/main.html', context)
