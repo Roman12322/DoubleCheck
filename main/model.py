@@ -36,7 +36,7 @@ def preprocessing_video(video_file, video_filename):
         # print(video_file.getbuffer())    
         video.write(video_file.getbuffer())
         frames = iio.imread(video_file, index=None, format_hint=".webm")
-        print(f"frames: {frames}")
+        print(f"frames: {frames.shape}")
 
     video_clip = VideoFileClip('output.webm')
     # создаем папку по названию видео файла
