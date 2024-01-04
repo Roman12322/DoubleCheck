@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import User
 from .model import pipeline, Meso4
 from django.contrib import messages
+import json
 
 def render_home_window(request):
     return render(request, "main/index.html")
@@ -69,10 +70,12 @@ def login(request):
     else:
         return render(request, 'main/signin.html')
 
+@csrf_exempt
 def recognize_person(request):
     if request.method == 'POST':
-        file = request.FILES.get('file', None)
+        # file = request.FILES.get('file', None)
         # avg_score = pipeline()
+        file = json.load(request)['post_data']
         context = {'confidence': f'получил видео {file}'}
         return render(request, 'main/main.html', context)
     else:

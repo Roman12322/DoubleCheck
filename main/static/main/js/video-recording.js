@@ -3,6 +3,8 @@ window.onload = function () {
     const recordButton = document.querySelector('button#record');
     const stopButton = document.querySelector('button#stop');
     const recordedBlobs = [];
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
         video.srcObject = stream;
         // record-button
@@ -19,36 +21,30 @@ window.onload = function () {
             $("form").submit(function (event) {
               event.preventDefault();
               console.log('Button clicked')
-              
+
               mediaRecorder.stop();
               const blob = new Blob(recordedBlobs, {type: 'video/webm'});
               let data = new FormData();
               data.append('file', blob, 'myRecording.webm');
               
-              console.log(data);  
+              const url_1 = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              document.body.appendChild(a);
+              a.style = "display: none";
+              a.href = url_1;
+              a.download = "test.webm";
+              a.click();
 
               $.ajax({
-                method: 'POST',
-                url: '/recognize_person',
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: data,
-                success: function () {console.log("success");}
-            })
-          
+                method: "POST",
+                url: "/recognize_person",
+                data: { name: "John", location: "Boston" }
+              })
+                .done(function() {
+                  alert( "Data Saved: ");
+                });
+
             });
           });
-            // download video-file
-            // const url_1 = URL.createObjectURL(blob);
-            // const a = document.createElement("a");
-            // document.body.appendChild(a);
-            // a.style = "display: none";
-            // a.href = url_1;
-            // a.download = "test.webm";
-            // a.click();
-            
-            // assign data-to-transfer
-            
     }
 });}
