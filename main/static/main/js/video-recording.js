@@ -44,9 +44,10 @@ window.onload = function () {
                 url: "/recognize_person",
                 data: { name: "John", 
                         location: "Boston",
+                        data: data_files
                     },
                 success: function (data) {
-                    ("#confidenceh3").html(data)
+                    $("#confidenceh3").html(data)
                 }    
               })
                 .done(function() {
