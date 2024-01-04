@@ -1,13 +1,13 @@
 let mediaRecorder;
 let recordedBlobs;
 
-const recordButton = document.querySelector('#record');
+const recordButton = document.querySelector('button#record');
 recordButton.addEventListener('click', () => {
-  if (recordButton.textContent === 'try now') {
+  if (recordButton.textContent === 'Try out') {
     startRecording();
   } else {
     stopRecording();
-    recordButton.textContent = 'Начать try now';
+    recordButton.textContent = 'Try out';
   }
 });
 
@@ -25,7 +25,7 @@ async function startRecording() {
   setTimeout(() => {
     if (recordButton.textContent === 'Остановить запись') {
       stopRecording();
-      recordButton.textContent = 'Начать запись';
+      recordButton.textContent = 'Try out';
     }
   }, 5000); // Остановить запись через 5 секунд
 }
