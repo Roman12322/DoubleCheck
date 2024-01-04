@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import User
 from .model import pipeline, Meso4
 from django.contrib import messages
+import io
 
 def render_home_window(request):
     return render(request, "main/index.html")

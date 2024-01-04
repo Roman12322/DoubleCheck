@@ -30,7 +30,10 @@ def format_timedelta(td):
 
 def preprocessing_video(video_file, video_filename):
     # загрузить видеоклип
-    video_clip = VideoFileClip(video_file)
+    with open("output.mp4", "wb") as video:
+        video.write(video_file.getbuffer())
+
+    video_clip = VideoFileClip(video)
     # создаем папку по названию видео файла
     filename, _ = os.path.splitext(video_filename)
     filename += "-moviepy"
