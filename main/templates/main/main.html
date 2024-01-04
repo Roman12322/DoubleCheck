@@ -81,7 +81,7 @@
       <div class="btn-box">
         <button class="try-button" id="stop">stop</button>
       </div>
-      <form action="recognize_person", method="post" id="post-form">
+      <form action="recognize_person", method="post" id="post-form" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="detail-box">
           <div class="confidence-box">
@@ -90,6 +90,9 @@
             </h3>
           </div>
           <video id="video" width="640" height="480" autoplay></video>
+          <div class="btn-box">
+            <button class="try-button" id="stop" type="submit">stop</button>
+          </div>
         </div>  
       </form>    
   </section>

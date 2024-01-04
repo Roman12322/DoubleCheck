@@ -14,33 +14,39 @@ window.onload = function () {
                 recordedBlobs.push(event.data);
                 };
         }
-        // stop-button 
-        stopButton.onclick = function () {
+        $('.submit').click(function (){
+            console.log('Button clicked')
+            
             mediaRecorder.stop();
             const blob = new Blob(recordedBlobs, {type: 'video/webm'});
-            
-            // download video-file
-            const url_1 = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            document.body.appendChild(a);
-            a.style = "display: none";
-            a.href = url_1;
-            a.download = "test.webm";
-            a.click();
-            
-            // assign data-to-transfer
             let data = new FormData();
             data.append('file', blob, 'myRecording.webm');
+            data.append("csrfmiddlewaretoken", "{{ csrf_token }}");
 
+            console.log(data);
+            
             $.ajax({
+                url: "{% url 'recognize_person' %}",
                 method: 'POST',
-                url: '/recognize_person',
                 processData: false,
                 contentType: false,
-                cache: false,
+                mimeType: "multipart/form-data",
                 data: data,
-                success: function () {console.log("success");}
+                success: function(data) {
+                    console.log("data sent to the backend");
+                }
             })
-        }
+        })
+            // download video-file
+            // const url_1 = URL.createObjectURL(blob);
+            // const a = document.createElement("a");
+            // document.body.appendChild(a);
+            // a.style = "display: none";
+            // a.href = url_1;
+            // a.download = "test.webm";
+            // a.click();
+            
+            // assign data-to-transfer
+            
     }
 });}
