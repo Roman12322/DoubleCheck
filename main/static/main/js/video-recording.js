@@ -42,7 +42,6 @@ window.onload = function () {
                 url: "/recognize_person",
                 data: { name: "John", 
                         location: "Boston",
-                        data_q: data_files,
                     },
                 processData: false       
               }).done(function(response) {

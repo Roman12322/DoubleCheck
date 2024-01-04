@@ -77,7 +77,7 @@ def recognize_person(request):
         # avg_score = pipeline()
         return HttpResponse(success)
     else:
-        failed_response = {'confidence': "failed to response"}
+        failed_response = f"failed response"
         return HttpResponse(failed_response)
  
 
