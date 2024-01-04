@@ -73,9 +73,10 @@ def login(request):
 @csrf_exempt
 def recognize_person(request):
     if request.method == 'POST':
+        print(f"{request.body}")
         video_filename = request.POST.get('filename', None)
         video = (request.FILES.get('video', None))
-        print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES} | body {request.body}")
+        print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES}")
         avg_score = pipeline(file=video.file, video_filename=video_filename)
         success = f"score: {avg_score}"
         return HttpResponse(success)
