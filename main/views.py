@@ -65,11 +65,9 @@ def login(request):
     else:
         return render(request, 'main/signin.html')
 
-@csrf_exempt
 def recognize_person(request):
     if request.method == 'POST':
-        file = request.FILES['file']
-        # Здесь вы можете обработать файл как вам нужно
+        file = request.FILES.get('file', None)
         # avg_score = pipeline()
         context = {'confidence': f'получил видео {file}'}
         render(request, 'main/main.html', context)

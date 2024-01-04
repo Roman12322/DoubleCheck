@@ -37,7 +37,7 @@ function stopRecording() {
 }
 
 function sendData(data) {
-    let url = 'https://doublecheck-production.up.railway.app/main/recognize_person';
+    let url = '/recognize_person';
     let formData = new FormData();
     formData.append('file', data, 'myRecording.webm');
     fetch(url, {
