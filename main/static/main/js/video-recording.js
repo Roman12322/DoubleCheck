@@ -27,6 +27,8 @@ window.onload = function () {
               let data_files = new FormData();
               data_files.append('video', blob);
               
+              console.log(recordedBlobs)
+
               console.log(blob)
               
               // const url_1 = URL.createObjectURL(blob);
