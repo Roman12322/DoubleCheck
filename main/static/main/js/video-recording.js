@@ -41,7 +41,6 @@ window.onload = function () {
                 method: "POST",
                 url: "/recognize_person",
                 data: data_files,
-                processData: false,
                 contentType: false,
               }).done(function(response) {
                 alert(response);
