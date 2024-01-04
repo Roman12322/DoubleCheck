@@ -40,13 +40,9 @@ window.onload = function () {
               $.ajax({
                 method: "POST",
                 url: "/recognize_person",
-                data: { name: "John", 
-                        location: "Boston",
-                        video: data_files,
-                    },
-                    dataType: 'json',
+                data: data_files,
                 processData: false,
-                contentType: false,
+                contentType: "multipart/form-data",
               }).done(function(response) {
                 alert(response);
               });
