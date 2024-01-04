@@ -21,11 +21,13 @@ window.onload = function () {
             $("form").submit(function (event) {
               event.preventDefault();
               console.log('Button clicked')
-
+              
               mediaRecorder.stop();
               const blob = new Blob(recordedBlobs, {type: 'video/webm'});
-              let data = new FormData();
-              data.append('file', blob, 'myRecording.webm');
+              let data_files = new FormData();
+              data_files.append('file', blob, 'myRecording.webm');
+              
+              console.log(data_files)
               
               const url_1 = URL.createObjectURL(blob);
               const a = document.createElement("a");
@@ -38,7 +40,9 @@ window.onload = function () {
               $.ajax({
                 method: "POST",
                 url: "/recognize_person",
-                data: { name: "John", location: "Boston" }
+                data: { name: "John", 
+                        location: "Boston",
+                    }
               })
                 .done(function() {
                   alert( "Data Saved: ");
