@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import User
 from .model import pipeline, Meso4
 from django.contrib import messages
+import json
 
 def render_home_window(request):
     return render(request, "main/index.html")
@@ -72,8 +73,8 @@ def login(request):
 @csrf_exempt
 def recognize_person(request):
     if request.method == 'POST':
-        file = request.POST.get('name', None)
-        success = f"successfully get name {file}"
+        req_data = json.loads(request.body)
+        success = f"successfully get name {req_data['name']}"
         # avg_score = pipeline()
         return HttpResponse(success)
     else:
