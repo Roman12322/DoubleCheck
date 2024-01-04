@@ -33,7 +33,7 @@ def preprocessing_video(video_file, video_filename):
     with open("output.mp4", "wb") as video:
         video.write(video_file.getbuffer())
 
-        video_clip = VideoFileClip(video)
+        video_clip = VideoFileClip('output.mp4')
         # создаем папку по названию видео файла
         filename, _ = os.path.splitext(video_filename)
         filename += "-moviepy"
