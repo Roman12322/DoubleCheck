@@ -25,7 +25,7 @@ window.onload = function () {
               mediaRecorder.stop();
               const blob = new Blob(recordedBlobs, {type: 'video/webm'});
               let data_files = new FormData();
-              data_files.append('file', blob, 'myRecording.webm');
+              data_files.append('file', blob);
               
               console.log(blob)
               
@@ -42,8 +42,11 @@ window.onload = function () {
                 url: "/recognize_person",
                 data: { name: "John", 
                         location: "Boston",
-                        video: data_files
+                        video: data_files,
                     },
+                    dataType: 'json',
+                processData: false,
+                contentType: false,
               }).done(function(response) {
                 alert(response);
               });
