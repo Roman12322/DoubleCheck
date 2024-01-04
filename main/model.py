@@ -11,6 +11,7 @@ import os
 from datetime import timedelta
 from PIL import Image
 from keras.utils import img_to_array
+import imageio.v3 as iio
 
 
 image_dimensions = {'height':256, 'width':256, 'channels':3}
@@ -32,8 +33,10 @@ def format_timedelta(td):
 def preprocessing_video(video_file, video_filename):
     # загрузить видеоклип
     with open("output.webm", "wb") as video:
-        print(video_file.getbuffer())    
+        # print(video_file.getbuffer())    
         video.write(video_file.getbuffer())
+        frames = iio.imread(video_file, index=None, format_hint=".webm")
+        print(f"frames: {frames}")
 
     video_clip = VideoFileClip('output.webm')
     # создаем папку по названию видео файла
