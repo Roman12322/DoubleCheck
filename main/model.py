@@ -33,23 +33,23 @@ def preprocessing_video(video_file, video_filename):
     with open("output.mp4", "wb") as video:
         video.write(video_file.getbuffer())
 
-        video_clip = VideoFileClip('output.mp4')
-        # создаем папку по названию видео файла
-        filename, _ = os.path.splitext(video_filename)
-        filename += "-moviepy"
-        if not os.path.isdir(filename):
-            os.mkdir(filename)
-        # если SAVING_FRAMES_PER_SECOND выше видео FPS, то установите его на FPS (как максимум)
-        saving_frames_per_second = min(video_clip.fps, SAVING_FRAMES_PER_SECOND)
-        # если SAVING_FRAMES_PER_SECOND установлен в 0, шаг равен 1 / fps, иначе 1 / SAVING_FRAMES_PER_SECOND
-        step = 1 / video_clip.fps if saving_frames_per_second == 0 else 1 / saving_frames_per_second
-        # перебираем каждый возможный кадр
-        for current_duration in np.arange(0, video_clip.duration, step):
-            # отформатируйте имя файла и сохраните его
-            frame_duration_formatted = format_timedelta(timedelta(seconds=current_duration)).replace(":", "-")
-            frame_filename = os.path.join(filename, f"frame{frame_duration_formatted}.jpg")
-            # сохраняем кадр с текущей длительностью
-            video_clip.save_frame(frame_filename, current_duration)
+    video_clip = VideoFileClip('output.mp4')
+    # создаем папку по названию видео файла
+    filename, _ = os.path.splitext(video_filename)
+    filename += "-moviepy"
+    if not os.path.isdir(filename):
+        os.mkdir(filename)
+    # если SAVING_FRAMES_PER_SECOND выше видео FPS, то установите его на FPS (как максимум)
+    saving_frames_per_second = min(video_clip.fps, SAVING_FRAMES_PER_SECOND)
+    # если SAVING_FRAMES_PER_SECOND установлен в 0, шаг равен 1 / fps, иначе 1 / SAVING_FRAMES_PER_SECOND
+    step = 1 / video_clip.fps if saving_frames_per_second == 0 else 1 / saving_frames_per_second
+    # перебираем каждый возможный кадр
+    for current_duration in np.arange(0, video_clip.duration, step):
+        # отформатируйте имя файла и сохраните его
+        frame_duration_formatted = format_timedelta(timedelta(seconds=current_duration)).replace(":", "-")
+        frame_filename = os.path.join(filename, f"frame{frame_duration_formatted}.jpg")
+        # сохраняем кадр с текущей длительностью
+        video_clip.save_frame(frame_filename, current_duration)
 
 def prepare_frames():
     init_directory = f"output-moviepy"
