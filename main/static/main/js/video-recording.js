@@ -1,20 +1,19 @@
-let mediaRecorder;
-let recordedBlobs;
+window.onload = function () {
+    var video = document.querySelector('video');
+    const recordButton = document.querySelector('button#record');
 
-const recordButton = document.querySelector('button#record');
-var video = document.querySelector('video');
+    navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
+        video.srcObject = stream;
+        recordButton.onclick = function () {
+            startRecording();
+            stopRecording();
+        }
 
-recordButton.addEventListener('click', () => {
-  if (recordButton.textContent === 'Try out') {
-    startRecording();
-  } else {
-    stopRecording();
-    recordButton.textContent = 'Try out';
-  }
-});
+    });
 
-async function startRecording() {
-  const stream = await navigator.mediaDevices.getUserMedia({video: true});
+}
+
+function startRecording() {
   mediaRecorder = new MediaRecorder(stream);
   recordedBlobs = [];
   mediaRecorder.ondataavailable = (event) => {
@@ -23,7 +22,6 @@ async function startRecording() {
     }
   };
   mediaRecorder.start();
-  video.srcObject = stream;
   recordButton.textContent = 'Остановить запись';
   setTimeout(() => {
     if (recordButton.textContent === 'Остановить запись') {
