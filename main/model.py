@@ -13,7 +13,7 @@ from PIL import Image
 from keras.utils import img_to_array
 
 image_dimensions = {'height':256, 'width':256, 'channels':3}
-SAVING_FRAMES_PER_SECOND = 2
+SAVING_FRAMES_PER_SECOND = 1
 
 
 def format_timedelta(td):
@@ -28,11 +28,11 @@ def format_timedelta(td):
     ms = round(ms / 1e4)
     return f"{result}.{ms:02}".replace(":", "-")
 
-def preprocessing_video(video_file):
+def preprocessing_video(video_file, video_filename):
     # загрузить видеоклип
     video_clip = VideoFileClip(video_file)
     # создаем папку по названию видео файла
-    filename, _ = os.path.splitext(video_file)
+    filename, _ = os.path.splitext(video_filename)
     filename += "-moviepy"
     if not os.path.isdir(filename):
         os.mkdir(filename)
@@ -49,7 +49,7 @@ def preprocessing_video(video_file):
         video_clip.save_frame(frame_filename, current_duration)
 
 def prepare_frames():
-    init_directory = "C:/Users/megaf/OneDrive/Рабочий стол/double_check/doublecheck/output-moviepy"
+    init_directory = f"output-moviepy"
     files = os.listdir(init_directory)
     images = []
     for path_img in files:
@@ -66,10 +66,10 @@ def get_average_predict_score(images_list, model):
         score += model.predict(img)[0][0]
     return score/len(images_list)    
 
-def pipeline():
-    preprocessing_video("C:/Users/megaf/OneDrive/Рабочий стол/double_check/doublecheck/output.avi")
+def pipeline(file, video_filename):
+    preprocessing_video(file, video_filename)
     meso = Meso4()
-    meso.load("C:/Users/megaf/OneDrive/Рабочий стол/double_check/doublecheck/main/model_weights/model.h5")
+    meso.load("main/model_weights/model.h5")
     images = prepare_frames()
     avg_score = get_average_predict_score(images_list=images, model=meso)
     return avg_score
