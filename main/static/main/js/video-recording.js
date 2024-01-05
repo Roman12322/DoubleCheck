@@ -42,6 +42,7 @@ window.onload = function () {
                 alert(response);
               });
               formdata = null;
+              recordedBlobs = [];
               });
           });
     })
