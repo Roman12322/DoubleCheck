@@ -32,16 +32,12 @@ window.onload = function () {
               console.log(recordedBlobs)
               console.log(blob)
 
-
               $.ajax({
                 method: "POST",
                 url: "/recognize_person",
                 data: formdata,
                 processData: false,
                 contentType: false,
-                success: function(newData){
-                  $('#confidenceh3').append(newData);
-              }
               }).done(function(response) {
                 alert(response);
               });

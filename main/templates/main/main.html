@@ -74,24 +74,23 @@
           will process your video and give you an answer either this video deepfake or not.</br>
         </h2>
       </div>
-      <div class="btn-box">
-        <button class="try-button" id="record">record</button>
-      </div>
       <form action="recognize_person", method="post" id="post-form" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="detail-box">
-          <div class="confidence-box">
-            <h3 id="confidenceh3">
-              Confidence: {{ confidence }}
-            </h3>
-          </div>
           <input type="hidden" name="csrfmiddlewaretoken" value="8W8kwU3tAq9NrRFhHkvBrFkHhGHQSIGB">
-          <video id="video" width="256" height="256" autoplay></video>
+          <div class="video-capture">
+            <video id="video" width="256" height="256" autoplay></video>
+          </div>
           <div class="btn-box">
             <button class="try-button" id="stop" type="submit">stop</button>
           </div>
         </div>  
-      </form>    
+      </form>
+      <div class="record-button">
+        <div class="btn-box">
+          <button class="try-button" id="record">record</button>
+        </div> 
+      </div>   
   </section>
   <section class="info_section layout_padding2">
     <div class="container">

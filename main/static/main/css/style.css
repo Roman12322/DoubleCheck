@@ -6,20 +6,16 @@ body {
   overflow-x: hidden;
 }
 
-.detail-box .confidence-box {
-  background-color: azure;
-  border: 5px solid black;
-  border-radius: 12px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0 25px;
-  margin-top: 25px;
-  color: black;
-  padding: 35px 100px;
-  text-align: center;
-  display: inline-block;
-  font-size: 16px;
+.detail-box .video-capture {
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 100px;
+}
+
+.record-button .btn-box .try-button {
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 100px;
 }
 
 .try-button {
