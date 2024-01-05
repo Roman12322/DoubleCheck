@@ -2,7 +2,7 @@ window.onload = function () {
     var video = document.querySelector('video');
     const recordButton = document.querySelector('button#record');
     const stopButton = document.querySelector('button#stop');
-    const recordedBlobs = [];
+    let recordedBlobs = [];
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
