@@ -535,15 +535,16 @@ a:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: absolute;
-      -ms-flex-align: absolute;
-          align-items: absolute;
-  text-align: absolute;
+  -webkit-box-align: relative;
+      -ms-flex-align: relative;
+          align-items: relative;
+  text-align: relative;
 }
 
-/* .video_section . {
-
-} */
+.video_section .video-container {
+  width: 100%;
+  height: 600px;
+}
 
 .why_section .box {
   margin-top: 45px;
