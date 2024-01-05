@@ -531,12 +531,47 @@ a:focus {
 
 .video_section .video-container {
   width: 100%;
+  flex-direction: column;
+  align-items: center;
   height: 1000px;
 }
 
+/* Стилизация блока с видео для центрирования */
 .video-window {
-  position: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
+
+/* Стилизация формы, чтобы кнопки были на одном уровне и располагались по центру */
+#post-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Стилизация кнопки 'stop' внутри формы */
+#post-form > div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px; /* небольшой отступ сверху для визуального разделения от видео */
+}
+
+/* Стилизация блока с кнопкой 'record' */
+.record-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px; /* аналогичный отступ, как у кнопки 'stop' */
+}
+
+/* Стилизация кнопок
+.try-button {
+  /* Здесь вы можете добавить стили для кнопок, например, размер, цвет, отступы и т.д. */
+/* } */ 
+
 
 .why_section .box {
   margin-top: 45px;
