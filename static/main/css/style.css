@@ -634,16 +634,12 @@ a:focus {
 .stop-button {
   position: absolute;
   top: 435px;
-  left: 235px;
+  left: 215px;
 }
 .record-button {
   position: absolute;
   top: 435px;
   left: 465px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 10%;
 }
 
