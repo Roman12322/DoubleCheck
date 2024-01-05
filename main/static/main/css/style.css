@@ -525,6 +525,25 @@ a:focus {
   background-color: #007fa4;
 }
 
+.video_section .box {
+  margin-top: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: absolute;
+      -ms-flex-align: absolute;
+          align-items: absolute;
+  text-align: absolute;
+}
+
+/* .video_section . {
+
+} */
+
 .why_section .box {
   margin-top: 45px;
   display: -webkit-box;
