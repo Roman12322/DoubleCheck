@@ -637,12 +637,14 @@ a:focus {
 
 .stop-button {
   position: absolute;
-  top: 415px;
+  top: 425px;
   left: 100px;
 }
 /* Стилизация блока с кнопкой 'record' */
 .record-button {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   position: absolute;
   top: 435px;
