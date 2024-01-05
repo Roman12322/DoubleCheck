@@ -603,7 +603,7 @@ a:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 1000px;
+  height: 350px;
 }
 
 .video_section .video-container {
@@ -635,14 +635,17 @@ a:focus {
   margin-top: 10px; /* небольшой отступ сверху для визуального разделения от видео */
 }
 
+.stop-button {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
 /* Стилизация блока с кнопкой 'record' */
 .record-button {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 10px; /* аналогичный отступ, как у кнопки 'stop' */
+  position: absolute;
+  top: 100px;
+  left: 250px;
 }
-
 
 /*team section */
 .team_section {
