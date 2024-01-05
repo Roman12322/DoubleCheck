@@ -534,11 +534,8 @@ a:focus {
   height: 1000px;
 }
 
-.video-container .video-window {
-  position: absolute;
-  top: 250px;
-  left: 250px;
-
+.video-window {
+  position: center;
 }
 
 .why_section .box {
