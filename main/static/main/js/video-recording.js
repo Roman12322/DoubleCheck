@@ -40,7 +40,7 @@ window.onload = function () {
                 processData: false,
                 contentType: false,
                 success: function(newData){
-                  $('#confidenceh3').h3(newData);
+                  $('#confidenceh3').append(newData);
               }
               }).done(function(response) {
                 alert(response);

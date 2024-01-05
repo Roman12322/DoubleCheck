@@ -78,9 +78,7 @@ def recognize_person(request):
         print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES}")
         avg_score = pipeline(file=video.file)
         success = f"score: {avg_score}"
-        # return HttpResponse(success)
-        data = {'confidence':success}
-        return render(request, 'main/main.html', context=data)
+        return HttpResponse(success)
     else:
         failed_response = f"failed response"
         return HttpResponse(failed_response)
