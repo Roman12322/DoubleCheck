@@ -32,6 +32,7 @@ window.onload = function () {
               console.log(recordedBlobs)
               console.log(blob)
 
+              
               $.ajax({
                 method: "POST",
                 url: "/recognize_person",
