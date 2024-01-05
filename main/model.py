@@ -14,7 +14,7 @@ from keras.utils import img_to_array
 import imageio.v3 as iio
 
 
-image_dimensions = {'height':256, 'width':256, 'channels':3}
+image_dimensions = {'height':480, 'width':640, 'channels':3}
 SAVING_FRAMES_PER_SECOND = 1
 
 
@@ -41,7 +41,6 @@ def preprocessing_video(video_file):
 def prepare_frames(frames):
     images = []
     for img in frames:
-        img = img.resize((image_dimensions['height'], image_dimensions['width']))
         img = (img)/255
         img = np.expand_dims(img, axis=0)
         images.append(img)
