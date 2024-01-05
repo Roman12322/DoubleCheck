@@ -67,24 +67,26 @@
       </div>
     </header>
   </div>
-  <div class="heading_container heading_center">
-    <h2>
-      Welcome to try out brand-new deepfake detector. <br> Our <span>DC-v1</span> 
-      will process your video and give you an answer either this video deepfake or not.</br>
-    </h2>
-  </div>
-  <form action="recognize_person", method="post" id="post-form" enctype="multipart/form-data">
-    {% csrf_token %}
-      <input type="hidden" name="csrfmiddlewaretoken" value="8W8kwU3tAq9NrRFhHkvBrFkHhGHQSIGB">
-      <div class="video-window">
-        <video id="video" width="256" height="256" autoplay></video>
-      </div>
-      <div>
-        <button class="try-button" id="stop" type="submit">stop</button>
-      </div>
-  </form>
-  <div class="record-button">
-    <button class="try-button" id="record">record</button>
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>
+        Welcome to try out brand-new deepfake detector. <br> Our <span>DC-v1</span> 
+        will process your video and give you an answer either this video deepfake or not.</br>
+      </h2>
+    </div>
+    <form action="recognize_person", method="post" id="post-form" enctype="multipart/form-data">
+      {% csrf_token %}
+        <input type="hidden" name="csrfmiddlewaretoken" value="8W8kwU3tAq9NrRFhHkvBrFkHhGHQSIGB">
+        <div class="video-window">
+          <video id="video" width="256" height="256" autoplay></video>
+        </div>
+        <div>
+          <button class="try-button" id="stop" type="submit">stop</button>
+        </div>
+    </form>
+    <div class="record-button">
+      <button class="try-button" id="record">record</button>
+    </div>
   </div>
   <section class="info_section layout_padding2">
     <div class="container">

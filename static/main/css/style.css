@@ -6,34 +6,6 @@ body {
   overflow-x: hidden;
 }
 
-.detail-box .confidence-box {
-  background-color: azure;
-  border: 5px solid black;
-  border-radius: 12px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0 25px;
-  margin-top: 25px;
-  color: black;
-  padding: 35px 100px;
-  text-align: center;
-  display: inline-block;
-  font-size: 16px;
-}
-
-.try-button {
-  background-color: cornflowerblue; /* Green */
-  border: 3px solid black;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 12px;
-}
-
 .layout_padding {
   padding: 90px 0;
 }
