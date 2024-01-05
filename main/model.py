@@ -32,41 +32,42 @@ def format_timedelta(td):
 
 def preprocessing_video(video_file, video_filename):
     # загрузить видеоклип
-    with open("output.webm", "wb") as video:
-        # print(video_file.getbuffer())    
-        video.write(video_file.getbuffer())
-        frames = iio.imread(video_file, index=None, format_hint=".webm")
-        print(f"frames: {frames.shape}")
+    frames = iio.imread(video_file, index=None, format_hint=".webm")
+    print(f"frames: {frames.shape}")
+    for frame in frames:
+        print(frame.shape)
+    return frames
+    # video_clip = VideoFileClip('output.webm')
+    # # создаем папку по названию видео файла
+    # filename, _ = os.path.splitext(video_filename)
+    # filename += "-moviepy"
+    # if not os.path.isdir(filename):
+    #     os.mkdir(filename)
+    # # если SAVING_FRAMES_PER_SECOND выше видео FPS, то установите его на FPS (как максимум)
+    # saving_frames_per_second = min(video_clip.fps, SAVING_FRAMES_PER_SECOND)
+    # # если SAVING_FRAMES_PER_SECOND установлен в 0, шаг равен 1 / fps, иначе 1 / SAVING_FRAMES_PER_SECOND
+    # step = 1 / video_clip.fps if saving_frames_per_second == 0 else 1 / saving_frames_per_second
+    # # перебираем каждый возможный кадр
+    # for current_duration in np.arange(0, video_clip.duration, step):
+    #     # отформатируйте имя файла и сохраните его
+    #     frame_duration_formatted = format_timedelta(timedelta(seconds=current_duration)).replace(":", "-")
+    #     frame_filename = os.path.join(filename, f"frame{frame_duration_formatted}.jpg")
+    #     # сохраняем кадр с текущей длительностью
+    #     video_clip.save_frame(frame_filename, current_duration)
 
-    video_clip = VideoFileClip('output.webm')
-    # создаем папку по названию видео файла
-    filename, _ = os.path.splitext(video_filename)
-    filename += "-moviepy"
-    if not os.path.isdir(filename):
-        os.mkdir(filename)
-    # если SAVING_FRAMES_PER_SECOND выше видео FPS, то установите его на FPS (как максимум)
-    saving_frames_per_second = min(video_clip.fps, SAVING_FRAMES_PER_SECOND)
-    # если SAVING_FRAMES_PER_SECOND установлен в 0, шаг равен 1 / fps, иначе 1 / SAVING_FRAMES_PER_SECOND
-    step = 1 / video_clip.fps if saving_frames_per_second == 0 else 1 / saving_frames_per_second
-    # перебираем каждый возможный кадр
-    for current_duration in np.arange(0, video_clip.duration, step):
-        # отформатируйте имя файла и сохраните его
-        frame_duration_formatted = format_timedelta(timedelta(seconds=current_duration)).replace(":", "-")
-        frame_filename = os.path.join(filename, f"frame{frame_duration_formatted}.jpg")
-        # сохраняем кадр с текущей длительностью
-        video_clip.save_frame(frame_filename, current_duration)
+def prepare_frames(frames):
+    # init_directory = f"output-moviepy"
+    # files = os.listdir(init_directory)
+    # images = []
+    # for path_img in files:
+    #     img = Image.open(init_directory+'/'+path_img)
+    #     img = img.resize((image_dimensions['height'], image_dimensions['width']))
+    #     img = img_to_array(img)/255
+    #     img = np.expand_dims(img, axis=0)
+    #     images.append(img)
+    # return images
+    pass
 
-def prepare_frames():
-    init_directory = f"output-moviepy"
-    files = os.listdir(init_directory)
-    images = []
-    for path_img in files:
-        img = Image.open(init_directory+'/'+path_img)
-        img = img.resize((image_dimensions['height'], image_dimensions['width']))
-        img = img_to_array(img)/255
-        img = np.expand_dims(img, axis=0)
-        images.append(img)
-    return images
 
 def get_average_predict_score(images_list, model):
     score = 0
@@ -75,10 +76,10 @@ def get_average_predict_score(images_list, model):
     return score/len(images_list)    
 
 def pipeline(file, video_filename):
-    preprocessing_video(file, video_filename)
+    frames = preprocessing_video(file, video_filename)
     meso = Meso4()
     meso.load("main/model_weights/model.h5")
-    images = prepare_frames()
+    images = prepare_frames(frames)
     avg_score = get_average_predict_score(images_list=images, model=meso)
     return avg_score
 

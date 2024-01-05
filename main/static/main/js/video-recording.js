@@ -10,7 +10,7 @@ window.onload = function () {
         // record-button
         recordButton.onclick = function () {
             mediaRecorder = new MediaRecorder(stream);
-            mediaRecorder.start(1000);   
+            mediaRecorder.start(100);   
             mediaRecorder.ondataavailable = (event) => {
                 if (event.data && event.data.size > 0) {
                 recordedBlobs.push(event.data);
