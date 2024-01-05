@@ -28,7 +28,7 @@ def prepare_frames(frames):
     images = []
     for img in frames:
         img = Image.fromarray(img, "RGB")
-        img = img.resize(image_dimensions['height'], image_dimensions['width'])
+        img = img.resize((image_dimensions['height'], image_dimensions['width']))
         img = img_to_array(img)
         img = (img)/255
         img = np.expand_dims(img, axis=0)
