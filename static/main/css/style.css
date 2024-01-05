@@ -636,7 +636,8 @@ a:focus {
 
 .stop-button {
   position: absolute;
-  top: 415px;
+  margin-top: 10px;
+  top: 405px;
   left: 70px;
 }
 /* Стилизация блока с кнопкой 'record' */
@@ -653,10 +654,8 @@ a:focus {
   color: black;
   padding: 15px 32px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 12px;
 }
 /*team section */
 .team_section {
