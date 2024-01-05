@@ -6,30 +6,6 @@ body {
   overflow-x: hidden;
 }
 
-.detail-box .video-capture {
-  position: absolute;
-  margin-top: 200px;
-  margin-left: 100px;
-}
-
-.record-button .btn-box .try-button {
-  position: absolute;
-  margin-top: 100px;
-  margin-left: 100px;
-}
-
-.try-button {
-  background-color: cornflowerblue; /* Green */
-  border: 3px solid black;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 12px;
-}
-
 .layout_padding {
   padding: 90px 0;
 }

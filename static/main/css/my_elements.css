@@ -1,0 +1,25 @@
+
+.video-window {
+    position: absolute;
+    top: 250px;
+    left: 250px;
+  }
+  
+  .record-button {
+    position: absolute;
+    top: 450px;
+    left: 100px;
+  }
+  
+  .try-button {
+    position: absolute;
+    background-color: cornflowerblue; /* Green */
+    border: 3px solid black;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+  }
