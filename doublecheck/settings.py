@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2+9lqo=h_afq%1vg0*1rm!3s@7(49pzxaetdm988s4wd13_*=2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # одна неделя
 CSRF_TRUSTED_ORIGINS = [
