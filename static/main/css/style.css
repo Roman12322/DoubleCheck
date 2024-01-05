@@ -632,7 +632,6 @@ a:focus {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 10px; /* небольшой отступ сверху для визуального разделения от видео */
 }
 
 .stop-button {
@@ -642,15 +641,23 @@ a:focus {
 }
 /* Стилизация блока с кнопкой 'record' */
 .record-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: absolute;
   top: 435px;
   left: 650px;
+  display: flex;
+  width: 100%;
 }
-
+.try-button {
+  background-color: cornflowerblue; /* Green */
+  border: 3px solid black;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
 /*team section */
 .team_section {
   text-align: center;
