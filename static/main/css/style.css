@@ -628,6 +628,7 @@ a:focus {
 #post-form > div {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .stop-button {
@@ -643,6 +644,7 @@ a:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 10%;
 }
 
 .try-button {
