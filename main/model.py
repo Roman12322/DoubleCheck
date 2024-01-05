@@ -1,41 +1,21 @@
 import numpy as np
-import os
 from keras.layers import Input, Dense, Flatten, Conv2D, MaxPooling2D, BatchNormalization, Dropout, Reshape, Concatenate, LeakyReLU
 from keras.optimizers import Adam
 from keras.models import Model
 from keras.models import load_model
-import cv2
-from moviepy.editor import VideoFileClip
 import numpy as np
 import os
-from datetime import timedelta
-from PIL import Image
-from keras.utils import img_to_array
 import imageio.v3 as iio
-
 
 image_dimensions = {'height':480, 'width':640, 'channels':3}
 SAVING_FRAMES_PER_SECOND = 1
-
-
-def format_timedelta(td):
-    """Служебная функция для классного форматирования объектов timedelta (например, 00: 00: 20.05)
-    исключая микросекунды и сохраняя миллисекунды"""
-    result = str(td)
-    try:
-        result, ms = result.split(".")
-    except ValueError:
-        return result + ".00".replace(":", "-")
-    ms = int(ms)
-    ms = round(ms / 1e4)
-    return f"{result}.{ms:02}".replace(":", "-")
 
 def preprocessing_video(video_file):
     # загрузить видеоклип
     frames = iio.imread(video_file, index=None, format_hint=".webm")
     print(f"frames: {frames.shape}")
-    for frame in frames:
-        print(frame.shape)
+    # for frame in frames:
+        # print(frame.shape)
     return frames
 
 def prepare_frames(frames):
@@ -45,7 +25,6 @@ def prepare_frames(frames):
         img = np.expand_dims(img, axis=0)
         images.append(img)
     return images
-
 
 def get_average_predict_score(images_list, model):
     score = 0
@@ -58,6 +37,7 @@ def pipeline(file):
     meso = Meso4()
     meso.load("main/model_weights/model.h5")
     images = prepare_frames(frames)
+    print(images[-1])
     avg_score = get_average_predict_score(images_list=images, model=meso)
     return avg_score
 
