@@ -74,18 +74,20 @@
     </h2>
   </div>
   <section class="video_section">
-    <form action="recognize_person", method="post" id="post-form" enctype="multipart/form-data">
-      {% csrf_token %}
-        <input type="hidden" name="csrfmiddlewaretoken" value="8W8kwU3tAq9NrRFhHkvBrFkHhGHQSIGB">
-        <div class="video-window">
-          <video id="video" width="256" height="256" autoplay></video>
-        </div>
-        <div>
-          <button class="try-button" id="stop" type="submit">stop</button>
-        </div>
-    </form>
-    <div class="record-button">
-      <button class="try-button" id="record">record</button>
+    <div class="container">
+      <form action="recognize_person", method="post" id="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+          <input type="hidden" name="csrfmiddlewaretoken" value="8W8kwU3tAq9NrRFhHkvBrFkHhGHQSIGB">
+          <div class="video-window">
+            <video id="video" width="256" height="256" autoplay></video>
+          </div>
+          <div>
+            <button class="try-button" id="stop" type="submit">stop</button>
+          </div>
+      </form>
+      <div class="record-button">
+        <button class="try-button" id="record">record</button>
+      </div>
     </div>
   </section>
   <section class="info_section layout_padding2">

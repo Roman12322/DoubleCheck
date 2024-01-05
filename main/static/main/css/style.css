@@ -527,6 +527,7 @@ a:focus {
 
 .video_section .box {
   margin-top: 45px;
+  padding-top: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
