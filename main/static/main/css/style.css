@@ -526,14 +526,16 @@ a:focus {
 }
 
 .video_section {
-  position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1000px;
 }
 
 .video_section .video-container {
   width: 100%;
   flex-direction: column;
   align-items: center;
-  height: 1000px;
 }
 
 /* Стилизация блока с видео для центрирования */
@@ -566,7 +568,6 @@ a:focus {
   width: 100%;
   margin-top: 10px; /* аналогичный отступ, как у кнопки 'stop' */
 }
-
 
 
 .why_section .box {
