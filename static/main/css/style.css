@@ -612,14 +612,12 @@ a:focus {
   align-items: center;
 }
 
-/* Стилизация блока с видео для центрирования */
 .video-window {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-/* Стилизация формы, чтобы кнопки были на одном уровне и располагались по центру */
 #post-form {
   display: flex;
   flex-direction: column;
@@ -627,7 +625,6 @@ a:focus {
   width: 100%;
 }
 
-/* Стилизация кнопки 'stop' внутри формы */
 #post-form > div {
   display: flex;
   justify-content: center;
@@ -639,19 +636,21 @@ a:focus {
   top: 415px;
   left: 70px;
 }
-/* Стилизация блока с кнопкой 'record' */
 .record-button {
   position: absolute;
   top: 435px;
   left: 650px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
 }
 .try-button {
   background-color: cornflowerblue; /* Green */
   border: 3px solid black;
   color: black;
-  /* padding: 15px 32px; */
+  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
