@@ -526,24 +526,19 @@ a:focus {
 }
 
 .video_section {
-  width: 100%;
-  height: 600px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: relative;
-      -ms-flex-align: relative;
-          align-items: relative;
-  text-align: relative;
+  position: center;
 }
 
 .video_section .video-container {
   width: 100%;
   height: 600px;
+}
+
+.video-container .video-window {
+  position: relative;
+  top: 250px;
+  left: 250px;
+  
 }
 
 .why_section .box {
