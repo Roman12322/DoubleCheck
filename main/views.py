@@ -96,7 +96,8 @@ def recognize_person(request):
                 print(request.FILES)
                 return HttpResponse(message)
         except:
-            message = "Record haven't found, please try again!"
+            message = "Hit stop-button, that will fix your error"
+            print(request.FILES)
             return HttpResponse(message)
 
     else:
