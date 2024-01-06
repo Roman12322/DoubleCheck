@@ -23,8 +23,6 @@ window.onload = function () {
                 };}
         }
 
-        
-        $(document).ready(function () {
             $("form").submit(function (event) {
               try {
                 event.preventDefault();
@@ -64,6 +62,5 @@ window.onload = function () {
                 alert("Record haven't found, please try again!");
               }
               });
-          });
     })
 }
