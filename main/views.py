@@ -82,11 +82,13 @@ def recognize_person(request):
                     print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES}")
                     avg_score = pipeline_InMemory(file=video.file)
                     success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
+                    print(video.file)
                     return HttpResponse(success)
                 else:
                     print('TemproryUploadedFile')
-                    file = io.BytesIO(base64.b64decode(video.read()))
-                    avg_score = pipeline_InMemory(file=file)
+                    tmp_file = io.BytesIO(base64.b64decode(video.read()))
+                    print(tmp_file)
+                    avg_score = pipeline_InMemory(file=tmp_file)
                     success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
                     return HttpResponse(success)
             else:
