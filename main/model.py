@@ -38,13 +38,16 @@ def get_average_predict_score(images_list, model):
     return score/len(images_list)    
 
 def pipeline_InMemory(file):
-    frames = preprocessing_video(file)
-    meso = Meso4()
-    meso.load("main/model_weights/model.h5")
-    images = prepare_frames(frames)
-    print("processing video-file")
-    avg_score = get_average_predict_score(images_list=images, model=meso)
-    return avg_score
+    try:
+        frames = preprocessing_video(file)
+        meso = Meso4()
+        meso.load("main/model_weights/model.h5")
+        images = prepare_frames(frames)
+        print("processing video-file")
+        avg_score = get_average_predict_score(images_list=images, model=meso)
+        return avg_score
+    except:
+        return ""
 
 # Create a Classifier class
 class Classifier:

@@ -74,29 +74,24 @@ def login(request):
 @csrf_exempt
 def recognize_person(request):
     if request.method == 'POST':
-        try:
-            video_filename = request.POST.get('filename', None)
-            video = (request.FILES.get('video', None))
-            if video:
-                if isinstance(video, InMemoryUploadedFile):
-                    print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES}")
-                    avg_score = pipeline_InMemory(file=video.file)
-                    success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
-                    print(video.file)
-                    return HttpResponse(success)
-                else:
-                    print('TemproryUploadedFile')
-                    tmp_file = io.BytesIO(base64.b64decode(video.read()))
-                    print(tmp_file)
-                    avg_score = pipeline_InMemory(file=tmp_file)
-                    success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
-                    return HttpResponse(success)
+        video_filename = request.POST.get('filename', None)
+        video = (request.FILES.get('video', None))
+        if video:
+            if isinstance(video, InMemoryUploadedFile):
+                print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES}")
+                avg_score = pipeline_InMemory(file=video.file)
+                success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
+                print(video.file)
+                return HttpResponse(success)
             else:
-                message = "Record haven't found, please try again!"
-                print(request.FILES)
-                return HttpResponse(message)
-        except:
-            message = "Hit stop-button, that will fix your error"
+                print('TemproryUploadedFile')
+                tmp_file = io.BytesIO(base64.b64decode(video.read()))
+                print(tmp_file)
+                avg_score = pipeline_InMemory(file=tmp_file)
+                success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
+                return HttpResponse(success)
+        else:
+            message = "Record haven't found, please try again!"
             print(request.FILES)
             return HttpResponse(message)
 
