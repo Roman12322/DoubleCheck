@@ -20,10 +20,10 @@ window.onload = function () {
         
         $(document).ready(function () {
             $("form").submit(function (event) {
-              mediaRecorder = new MediaRecorder();
               event.preventDefault();
               console.log('Button clicked')
               
+              mediaRecorder = new MediaRecorder();
               mediaRecorder.stop();
               let blob = new Blob(recordedBlobs, {type: 'video/webm'});
               let formdata = new FormData();
