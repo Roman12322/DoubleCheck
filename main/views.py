@@ -74,8 +74,8 @@ def login(request):
 @csrf_exempt
 def recognize_person(request):
     if request.method == 'POST':
-        print(f"{request.FILES.keys()} ключи")
-        try:
+            print(f"{request.FILES.keys()} ключи в request.FILES.keys()")
+        # try:
             video_filename = request.POST.get('filename', None)
             print(video_filename)
             video = (request.FILES.get(video_filename.split('.')[0], None))
@@ -91,12 +91,12 @@ def recognize_person(request):
                     return HttpResponse(success)
             else:
                 message = "Record haven't found, please try again!"
-                print(request.FILES)
+                print(f"{request.FILES} просто request.FILES")
                 return HttpResponse(message)
-        except:
-            message = "Record haven't found, please try again!"
-            print(request.FILES.keys())
-            return HttpResponse(message)
+        # except:
+        #     message = "Record haven't found, please try again!"
+        #     print(request.FILES.keys())
+        #     return HttpResponse(message)
 
     else:
         failed_response = f"failed response"
