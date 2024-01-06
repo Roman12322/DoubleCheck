@@ -73,12 +73,21 @@ def login(request):
 @csrf_exempt
 def recognize_person(request):
     if request.method == 'POST':
-        video_filename = request.POST.get('filename', None)
-        video = (request.FILES.get('video', None))
-        print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES}")
-        avg_score = pipeline(file=video.file)
-        success = f"score: {avg_score}"
-        return HttpResponse(success)
+        try:
+            video_filename = request.POST.get('filename', None)
+            video = (request.FILES.get('video', None))
+            if video:
+                print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES}")
+                avg_score = pipeline(file=video.file)
+                success = f"You're not a deep fake with a change: {round(avg_score, 2)}"
+                return HttpResponse(success)
+            else:
+                message = "Record haven't found, please try again!"
+                return HttpResponse(message)
+        except:
+            message = "Record haven't found, please try again!"
+            return HttpResponse(message)
+
     else:
         failed_response = f"failed response"
         return HttpResponse(failed_response)
