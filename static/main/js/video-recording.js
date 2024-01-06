@@ -9,7 +9,7 @@ window.onload = function () {
         video.srcObject = stream;
         // record-button
         recordButton.onclick = function () {
-          mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.start(100);   
             mediaRecorder.ondataavailable = (event) => {
                 if (event.data && event.data.size > 0) {
@@ -20,7 +20,7 @@ window.onload = function () {
         
         $(document).ready(function () {
             $("form").submit(function (event) {
-              mediaRecorder = new MediaRecorder(stream);
+              mediaRecorder = new MediaRecorder();
               event.preventDefault();
               console.log('Button clicked')
               
