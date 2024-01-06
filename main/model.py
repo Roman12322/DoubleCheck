@@ -17,11 +17,9 @@ image_dimensions = {'height':256, 'width':256, 'channels':3}
 SAVING_FRAMES_PER_SECOND = 1
 
 def preprocessing_video(video_file):
-    # загрузить видеоклип
+    # load video-file
     frames = iio.imread(video_file, index=None, format_hint=".webm")
-    print(f"frames: {frames.shape}")
-    # for frame in frames:
-        # print(frame.shape)
+    print(f"frames' shape: {frames.shape}")
     return frames
 
 def prepare_frames(frames):
@@ -46,7 +44,7 @@ def pipeline(file):
     meso = Meso4()
     meso.load("main/model_weights/model.h5")
     images = prepare_frames(frames)
-    print(images[-1])
+    print("processing video-file")
     avg_score = get_average_predict_score(images_list=images, model=meso)
     return avg_score
 

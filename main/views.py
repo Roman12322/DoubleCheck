@@ -55,7 +55,6 @@ def login(request):
         try:
             email = request.POST['email']
             password = request.POST['password']
-            # user = authenticate(request, email=email, password=password)
             user = User.objects.get(email=email, password=password)
             print(user)
             if user is not None:
@@ -79,7 +78,7 @@ def recognize_person(request):
             if video:
                 print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES}")
                 avg_score = pipeline(file=video.file)
-                success = f"You're not a deep fake with a change: {round(avg_score, 2)}"
+                success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
                 return HttpResponse(success)
             else:
                 message = "Record haven't found, please try again!"
