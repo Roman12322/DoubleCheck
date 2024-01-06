@@ -655,6 +655,19 @@ a:focus {
   font-size: 16px;
   border-radius: 12px;
 }
+
+.try-button :hover {
+
+  background-color: lightblue;
+
+}
+
+.try-button :active{
+
+  background-color: lightgreen;
+
+}
+
 /*team section */
 .team_section {
   text-align: center;
