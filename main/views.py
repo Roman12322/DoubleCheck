@@ -86,6 +86,7 @@ def recognize_person(request):
                 else:
                     print('TemproryUploadedFile')
                     success = f"Chance that you're not a deepfake : TMPfile"
+                    print(video.read())
                     return HttpResponse(success)
             else:
                 message = "Record haven't found, please try again!"
