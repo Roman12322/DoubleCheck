@@ -632,15 +632,16 @@ a:focus {
 }
 
 .stop-button {
-  position: absolute;
-  top: 435px;
-  left: 215px;
+  position: relative;
+  top: 0;
+  left: 80px;
 }
 .record-button {
-  position: absolute;
-  top: 435px;
-  left: 465px;
-  width: 10%;
+  display: flex;
+  position: relative;
+  top: -57px;
+  left: 39px;
+  width: 40%;
 }
 
 .try-button {
