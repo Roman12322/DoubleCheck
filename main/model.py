@@ -16,7 +16,7 @@ SAVING_FRAMES_PER_SECOND = 1
 
 def preprocessing_video(video_file):
     # load video-file
-    frames = iio.imread(video_file, index=None, extension=".mp4")
+    frames = iio.imread(video_file, index=None, extension=".mp4", format_hint='.mp4')
     print(f"frames' shape: {frames.shape}")
     return frames
 
