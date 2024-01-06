@@ -79,6 +79,7 @@ def recognize_person(request):
             video_filename = request.POST.get('filename', None)
             print(video_filename)
             video = (request.FILES.get(video_filename.split('.')[0], None))
+            print(f"print video {video}")
             if video:
                 if isinstance(video, InMemoryUploadedFile):
                     avg_score = pipeline_InMemory(file=video.file)
