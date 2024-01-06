@@ -644,6 +644,18 @@ a:focus {
   width: 40%;
 }
 
+.try-button:hover {
+
+  background-color: lightblue;
+
+}
+
+.try-button:active{
+
+  background-color: lightgreen;
+
+}
+
 .try-button {
   background-color: cornflowerblue; /* Green */
   border: 3px solid black;
@@ -654,18 +666,6 @@ a:focus {
   display: inline-block;
   font-size: 16px;
   border-radius: 12px;
-}
-
-.try-button :hover {
-
-  background-color: lightblue;
-
-}
-
-.try-button :active{
-
-  background-color: lightgreen;
-
 }
 
 /*team section */
