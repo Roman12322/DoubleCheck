@@ -1,17 +1,15 @@
 import numpy as np
-import os
 from keras.layers import Input, Dense, Flatten, Conv2D, MaxPooling2D, BatchNormalization, Dropout, Reshape, Concatenate, LeakyReLU
 from keras.optimizers import Adam
 from keras.models import Model
 from keras.models import load_model
-import cv2
 from moviepy.editor import VideoFileClip
 import numpy as np
-import os
 from datetime import timedelta
 from PIL import Image
 from keras.utils import img_to_array
 import imageio.v3 as iio
+import io
 
 image_dimensions = {'height':256, 'width':256, 'channels':3}
 SAVING_FRAMES_PER_SECOND = 1
@@ -39,7 +37,7 @@ def get_average_predict_score(images_list, model):
         score += model.predict(img)[0][0]
     return score/len(images_list)    
 
-def pipeline(file):
+def pipeline_InMemory(file):
     frames = preprocessing_video(file)
     meso = Meso4()
     meso.load("main/model_weights/model.h5")
