@@ -2,10 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import login as django_login
 from django.views.decorators.csrf import csrf_exempt
+from django.core.files.uploadedfile import TemporaryUploadedFile, InMemoryUploadedFile
 from .models import User
 from .model import pipeline, Meso4
 from django.contrib import messages
 import io
+import base64
 
 def render_home_window(request):
     return render(request, "main/index.html")
@@ -76,10 +78,15 @@ def recognize_person(request):
             video_filename = request.POST.get('filename', None)
             video = (request.FILES.get('video', None))
             if video:
-                print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES}")
-                avg_score = pipeline(file=video.file)
-                success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
-                return HttpResponse(success)
+                if isinstance(video, InMemoryUploadedFile):
+                    print(f"video-file_name: {video_filename} | video: {video} | file: {video.file} | FILES: {request.FILES}")
+                    avg_score = pipeline(file=video.file)
+                    success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
+                    return HttpResponse(success)
+                else:
+                    print('TemproryUploadedFile')
+                    success = f"Chance that you're not a deepfake : TMPfile"
+                    return HttpResponse(success)
             else:
                 message = "Record haven't found, please try again!"
                 return HttpResponse(message)
