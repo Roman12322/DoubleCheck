@@ -15,7 +15,8 @@ window.onload = function () {
         video.srcObject = stream;
         // record-button
         recordButton.onclick = function () {
-            mediaRecorder = new MediaRecorder(stream);
+            var options = {mimeType: "video/webm;codecs=vp9"}
+            mediaRecorder = new MediaRecorder(stream, options);
             mediaRecorder.start(100);   
             mediaRecorder.ondataavailable = (event) => {
                 if (event.data && event.data.size > 0) {
