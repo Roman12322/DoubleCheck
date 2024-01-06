@@ -24,9 +24,9 @@ window.onload = function () {
         }
 
             $("form").submit(function (event) {
+                event.preventDefault();
               try {
                 if (recordedBlobs.length >2) {
-                  event.preventDefault();
                   mediaRecorder.stop();
                   val = getRandomInt(max_v);
                   filename = 'video'.concat(val);
