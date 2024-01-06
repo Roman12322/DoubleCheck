@@ -20,6 +20,7 @@ window.onload = function () {
         
         $(document).ready(function () {
             $("form").submit(function (event) {
+              mediaRecorder = new MediaRecorder(stream);
               event.preventDefault();
               console.log('Button clicked')
               
