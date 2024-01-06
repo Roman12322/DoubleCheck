@@ -15,6 +15,7 @@ window.onload = function () {
         video.srcObject = stream;
         // record-button
         recordButton.onclick = function () {
+            var options = {mimeType : 'video/mp4'}
             mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.start(100);   
             mediaRecorder.ondataavailable = (event) => {
@@ -31,9 +32,9 @@ window.onload = function () {
                   val = getRandomInt(max_v);
                   filename = 'video'.concat(val);
 
-                  let blob = new Blob(recordedBlobs, {type: 'video/webm'});
+                  let blob = new Blob(recordedBlobs, {type: 'video/mp4'});
                   let formdata = new FormData();
-                  formdata.append("filename", filename.concat('.webm'));
+                  formdata.append("filename", filename.concat('.mp4'));
                   formdata.append(filename, blob);
                   
                   // logging
@@ -47,6 +48,7 @@ window.onload = function () {
                     url: "/recognize_person",
                     data: formdata,
                     processData: false,
+                    cache: false,
                     contentType: false,
                   }).done(function(response) {
                     alert(response);
