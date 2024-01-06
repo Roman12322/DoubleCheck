@@ -20,30 +20,33 @@ window.onload = function () {
         
         $(document).ready(function () {
             $("form").submit(function (event) {
-              event.preventDefault();
-              console.log('Button clicked')
-              
-              mediaRecorder = new MediaRecorder();
-              mediaRecorder.stop();
-              let blob = new Blob(recordedBlobs, {type: 'video/webm'});
-              let formdata = new FormData();
-              formdata.append("filename", 'test.webm')
-              formdata.append('video', blob);
-              
-              console.log(recordedBlobs)
-              console.log(blob)
-
-              $.ajax({
-                method: "POST",
-                url: "/recognize_person",
-                data: formdata,
-                processData: false,
-                contentType: false,
-              }).done(function(response) {
-                alert(response);
-              });
-              formdata = null;
-              recordedBlobs = [];
+              try {
+                event.preventDefault();
+                console.log('Button clicked')
+                
+                mediaRecorder.stop();
+                let blob = new Blob(recordedBlobs, {type: 'video/webm'});
+                let formdata = new FormData();
+                formdata.append("filename", 'test.webm')
+                formdata.append('video', blob);
+                
+                console.log(recordedBlobs)
+                console.log(blob)
+  
+                $.ajax({
+                  method: "POST",
+                  url: "/recognize_person",
+                  data: formdata,
+                  processData: false,
+                  contentType: false,
+                }).done(function(response) {
+                  alert(response);
+                });
+                formdata = null;
+                recordedBlobs = []; 
+              } catch (error) {
+                alert("Record haven't found, please try again!");
+              }
               });
           });
     })
