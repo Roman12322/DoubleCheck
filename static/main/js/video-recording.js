@@ -22,28 +22,33 @@ window.onload = function () {
             $("form").submit(function (event) {
               try {
                 event.preventDefault();
-                console.log('Button clicked')
-                
                 mediaRecorder.stop();
-                let blob = new Blob(recordedBlobs, {type: 'video/webm'});
-                let formdata = new FormData();
-                formdata.append("filename", 'test.webm')
-                formdata.append('video', blob);
-                
-                console.log(recordedBlobs)
-                console.log(blob)
-  
-                $.ajax({
-                  method: "POST",
-                  url: "/recognize_person",
-                  data: formdata,
-                  processData: false,
-                  contentType: false,
-                }).done(function(response) {
-                  alert(response);
-                });
-                formdata = null;
-                recordedBlobs = []; 
+                if (recordedBlobs.length >=3) {
+                  let blob = new Blob(recordedBlobs, {type: 'video/webm'});
+                  let formdata = new FormData();
+                  formdata.append("filename", 'test.webm');
+                  formdata.append('video', blob);
+                  
+                  // logging
+                  console.log(recordedBlobs)
+                  console.log(blob)
+    
+                  $.ajax({
+                    method: "POST",
+                    url: "/recognize_person",
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                  }).done(function(response) {
+                    alert(response);
+                  });
+                  formdata = null;
+                  recordedBlobs = [];
+                }
+                else {
+                  alert("Record haven't found or video is too short! Try again");
+                }
+ 
               } catch (error) {
                 alert("Record haven't found, please try again!");
               }
