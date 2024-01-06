@@ -26,9 +26,9 @@ window.onload = function () {
 
             $("form").submit(function (event) {
                 event.preventDefault();
+                mediaRecorder.stop();
               try {
                 if (recordedBlobs.length >2) {
-                  mediaRecorder.stop();
                   val = getRandomInt(max_v);
                   filename = 'video'.concat(val);
 
