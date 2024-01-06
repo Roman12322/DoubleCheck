@@ -15,7 +15,7 @@ window.onload = function () {
         video.srcObject = stream;
         // record-button
         recordButton.onclick = function () {
-            var options = {mimeType : 'video/avi'}
+            var options = {mimeType : 'video/webm'}
             mediaRecorder = new MediaRecorder(stream, options);
             mediaRecorder.start(100);   
             mediaRecorder.ondataavailable = (event) => {
@@ -32,9 +32,9 @@ window.onload = function () {
                   val = getRandomInt(max_v);
                   filename = 'video'.concat(val);
 
-                  let blob = new Blob(recordedBlobs, {type: 'video/avi'});
+                  let blob = new Blob(recordedBlobs, {type: 'video/webm'});
                   let formdata = new FormData();
-                  formdata.append("filename", filename.concat('.avi'));
+                  formdata.append("filename", filename.concat('.webm'));
                   formdata.append(filename, blob);
                   
                   // logging
