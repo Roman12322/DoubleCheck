@@ -15,8 +15,8 @@ window.onload = function () {
         video.srcObject = stream;
         // record-button
         recordButton.onclick = function () {
-            var options = {mimeType : 'video/mp4'}
-            mediaRecorder = new MediaRecorder(stream);
+            var options = {mimeType : 'video/avi'}
+            mediaRecorder = new MediaRecorder(stream, options);
             mediaRecorder.start(100);   
             mediaRecorder.ondataavailable = (event) => {
                 if (event.data && event.data.size > 0) {
@@ -32,9 +32,9 @@ window.onload = function () {
                   val = getRandomInt(max_v);
                   filename = 'video'.concat(val);
 
-                  let blob = new Blob(recordedBlobs, {type: 'video/mp4'});
+                  let blob = new Blob(recordedBlobs, {type: 'video/avi'});
                   let formdata = new FormData();
-                  formdata.append("filename", filename.concat('.mp4'));
+                  formdata.append("filename", filename.concat('.avi'));
                   formdata.append(filename, blob);
                   
                   // logging
