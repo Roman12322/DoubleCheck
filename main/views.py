@@ -93,6 +93,7 @@ def recognize_person(request):
                     return HttpResponse(success)
             else:
                 message = "Record haven't found, please try again!"
+                print(request.FILES)
                 return HttpResponse(message)
         except:
             message = "Record haven't found, please try again!"
