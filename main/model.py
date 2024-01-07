@@ -18,11 +18,13 @@ SAVING_FRAMES_PER_SECOND = 1
 
 def preprocessing_video(video_file):
     # load video-file
+    
     try:
         frames = iio.imread(video_file, index=None, format_hint='.webm')
         print(f"frames' shape: {frames.shape}")
         return frames
     except Exception as e:
+        video_file.seek(0)
         image_stream = io.BytesIO()
         image_stream.write(video_file.read())
         image_stream.seek(0)
