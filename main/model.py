@@ -16,6 +16,8 @@ SAVING_FRAMES_PER_SECOND = 1
 
 def preprocessing_video(video_file):
     # load video-file
+    readed_file = np.frombuffer(video_file)
+    print(f"numpy read from buffer: {readed_file} | shape {readed_file.shape}")
     frames = iio.imread(video_file, index=None, format_hint='.webm')
     print(f"frames' shape: {frames.shape}")
     return frames

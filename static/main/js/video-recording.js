@@ -24,9 +24,9 @@ window.onload = function () {
         }
 
             $("form").submit(function (event) {
+              try {
                 event.preventDefault();
                 mediaRecorder.stop();
-              try {
                 if (recordedBlobs.length >2) {
                   val = getRandomInt(max_v);
                   filename = 'video'.concat(val);
@@ -48,6 +48,12 @@ window.onload = function () {
                     data: formdata,
                     processData: false,
                     contentType: false,
+                    success: function(response) {
+                      console.log("response executed successfully", response)
+                    },
+                    error: function(response) {
+                      console.log("response executed with error", response)
+                    }
                   }).done(function(response) {
                     alert(response);
                   });
