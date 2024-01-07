@@ -31,7 +31,7 @@ def preprocessing_video(video_file):
         # file_bytes = np.asarray(bytearray(image_stream.read()), dtype=np.uint8)
         # print(f"bytes: {file_bytes}")
         print("writed to image_stream")
-        frames = iio.imread(video_file, index=None, format_hint='.mp4')
+        frames = iio.imread(image_stream, index=None, format_hint='.mp4')
         print(frames)
         return frames
 
