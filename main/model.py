@@ -30,8 +30,8 @@ def preprocessing_video(video_file):
         image_stream.seek(0)
         file_bytes = np.frombuffer(bytearray(image_stream.read()), dtype=np.uint8)
         print(f"bytes: {file_bytes}")
+        print(f"shape of filebytes: {file_bytes.reshape(640,480,3).shape}")
         img = cv.imdecode(file_bytes, cv.IMREAD_COLOR)
-        print(f"shape of filebytes: {file_bytes.shape}")
         print(f"img: {img.shape}")
         return img
 
