@@ -9,7 +9,9 @@ from datetime import timedelta
 from PIL import Image
 from keras.utils import img_to_array
 import imageio.v3 as iio
+import cv2 as cv
 import io
+import subprocess
 
 image_dimensions = {'height':256, 'width':256, 'channels':3}
 SAVING_FRAMES_PER_SECOND = 1
@@ -21,9 +23,13 @@ def preprocessing_video(video_file):
         print(f"frames' shape: {frames.shape}")
         return frames
     except Exception as e:
-        frames = iio.imread(video_file, index=None, extension='.mp4')
-        return frames
-        print(e)
+        image_stream = io.BytesIO()
+        image_stream.write(video_file.read())
+        image_stream.seek(0)
+        file_bytes = np.asarray(bytearray(image_stream.read()), dtype=np.uint8)
+        img = cv.imdecode(file_bytes, cv.IMREAD_COLOR)
+        print(f"shape of filebytes: {file_bytes.shape}")
+        return img
 
 def prepare_frames(frames):
     images = []
