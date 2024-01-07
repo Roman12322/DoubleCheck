@@ -10,7 +10,7 @@ window.onload = function () {
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     const max_v = 1234567890
 
-    stream = navigator.mediaDevices.getUserMedia({video: true})
+    var stream = navigator.mediaDevices.getUserMedia({video: true});
     video.srcObject = stream;
     // record-button
     mediaRecorder = new MediaRecorder(stream);
