@@ -31,6 +31,7 @@ def preprocessing_video(video_file):
         file_bytes = np.asarray(bytearray(image_stream.read()), dtype=np.uint8)
         img = cv.imdecode(file_bytes, cv.IMREAD_COLOR)
         print(f"shape of filebytes: {file_bytes.shape}")
+        print(f"img: {img.shape}")
         return img
 
 def prepare_frames(frames):
