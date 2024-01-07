@@ -13,8 +13,8 @@ window.onload = function () {
     stream = navigator.mediaDevices.getUserMedia({video: true})
     video.srcObject = stream;
     // record-button
+    mediaRecorder = new MediaRecorder(stream);
     recordButton.onclick = function () {
-        mediaRecorder = new MediaRecorder(stream);
         mediaRecorder.start(100);   
         mediaRecorder.ondataavailable = (event) => {
             if (event.data && event.data.size > 0) {
