@@ -47,7 +47,6 @@ window.onload = function () {
                     url: "/recognize_person",
                     data: formdata,
                     processData: false,
-                    cache: false,
                     contentType: false,
                   }).done(function(response) {
                     alert(response);
@@ -60,7 +59,7 @@ window.onload = function () {
                 }
  
               } catch (error) {
-                alert("Record haven't found, please try again!");
+                alert("Record haven't found, please try again!", error);
               }
               });
     })
