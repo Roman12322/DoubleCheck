@@ -76,17 +76,17 @@ def recognize_person(request):
     if request.method == 'POST':
         try:
             video_filename = request.POST.get('filename', None)
-            print(video_filename)
+            print(f"video name {video_filename}")
             video = (request.FILES.get(video_filename.split('.')[0], None))
-            print(f"print video {video}")
+            print(f"video as a file {video} | video.filetype {video.file}")
             if video:
                 if isinstance(video, InMemoryUploadedFile):
                     avg_score = pipeline_InMemory(file=video.file)
                     success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
                     return HttpResponse(success)
                 else:
-                    tmp_file = io.BytesIO(base64.b64decode(video.read()))
-                    avg_score = pipeline_InMemory(file=tmp_file)
+                    # tmp_file = io.BytesIO(base64.b64decode(video.read()))
+                    avg_score = pipeline_InMemory(file=video.file)
                     success = f"Chance that you're not a deepfake : {round(avg_score, 2)}"
                     return HttpResponse(success)
             else:
