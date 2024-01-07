@@ -28,12 +28,12 @@ def preprocessing_video(video_file):
         image_stream = io.BytesIO()
         image_stream.write(video_file.read())
         image_stream.seek(0)
-        file_bytes = np.frombuffer(bytearray(image_stream.read()), dtype=np.uint8)
-        print(f"bytes: {file_bytes}")
-        print(f"shape of filebytes: {file_bytes.reshape(640,480,3).shape}")
-        img = cv.imdecode(file_bytes, cv.IMREAD_COLOR)
-        print(f"img: {img.shape}")
-        return img
+        # file_bytes = np.asarray(bytearray(image_stream.read()), dtype=np.uint8)
+        # print(f"bytes: {file_bytes}")
+        print("writed to image_stream")
+        frames = iio.imread(video_file, index=None, format_hint='.webm')
+        print(frames)
+        return frames
 
 def prepare_frames(frames):
     images = []
