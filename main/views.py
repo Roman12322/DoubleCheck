@@ -77,6 +77,7 @@ def recognize_person(request):
         try:
             video_filename = request.POST.get('filename', None)
             print(f"video name {video_filename}")
+            print(f"{request.POST} post")
             video = (request.FILES.get(video_filename.split('.')[0], None))
             print(f"video as a file {video} | video.filetype {video.file}")
             if video:
