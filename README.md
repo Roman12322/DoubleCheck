@@ -1,4 +1,4 @@
-# DoubleCheck (https://doublecheck-production.up.railway.app/)
+# [DoubleCheck](https://doublecheck-production.up.railway.app/)
 
 ## Task description
 
